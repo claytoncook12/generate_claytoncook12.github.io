@@ -1,0 +1,37 @@
+{% extends '_base.html' %}
+
+{% block css_styles %}
+  {% for css_style in css_style_sheets %}
+    <link rel="stylesheet" href="../static/css/{{ css_style }}">
+  {% endfor %}
+{% endblock %}
+
+{% block content %}
+<div class="w3-card-4 w3-margin w3-white">
+  <img src="../static/images/{{ blog_post.main_image }}" alt="image_1400x440" 
+    style="width:100%"
+  >
+  <div class="w3-container w3-content">
+    <h1><b><u>{{ blog_post.title }}</u></b></h1>
+    <h5><span class="w3-opacity">{{ blog_post.date  }}</span></h5>
+
+    <!-- Blog -->
+    <div class="w3-margin-bottom">
+      {{ blog_file_contents | safe }}
+    </div>
+
+    <div class="w3-row">
+      <div class="w3-col m8 s12">
+        <p><button 
+          class="w3-button w3-padding-large w3-white w3-border"
+          type="button"
+          onclick="location.href='{{index_ref}}index.html'"
+          >
+          <b>Back to Home</b>
+        </button></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

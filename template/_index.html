@@ -1,0 +1,95 @@
+{% extends '_base.html' %}
+
+{% block css_styles %}
+  {% for css_style in css_style_sheets %}
+    <link rel="stylesheet" href="static/css/{{ css_style }}">
+  {% endfor %}
+{% endblock %}
+
+{% block content %}
+<!-- Grid -->
+<div class="w3-row">
+
+<!-- Blog entries -->
+<div class="w3-col l8 s12">
+  <!-- Blog entry -->
+  {% for blog_post in blog_posts %}
+  <div class="w3-card-4 w3-margin w3-white">
+    <img src="static/images/{{ blog_post.main_image }}" alt="image_1400x440" style="width:100%">
+    <div class="w3-container">
+      <h3><b>{{ blog_post.title }}</b></h3>
+      <h5><span class="w3-opacity">{{ blog_post.date  }}</span></h5>
+    </div>
+
+    <div class="w3-container">
+      <p>
+        {{ blog_post.short_desc }}
+      </p>
+      <div class="w3-row">
+        <div class="w3-col m8 s12">
+          <p><button 
+            class="w3-button w3-padding-large w3-white w3-border"
+            type="button"
+            onclick="location.href='blog/{{ blog_post.html_file }}'"
+            >
+            <b>READ MORE</b>
+          </button></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  {% endfor %}
+<!-- END BLOG ENTRIES -->
+</div>
+
+<!-- Introduction menu -->
+<div class="w3-col l4">
+  <!-- About Card -->
+  <div class="w3-card w3-margin w3-margin-top">
+  <img src="static/images/{{ head_shot }}" alt="head_shot" style="width:100%">
+    <div class="w3-container w3-white">
+      <h4><b>{{ blogger_name }}</b></h4>
+      <p>
+        Hello! This is my budding online blog where I write about programming
+        interests and hopefully house some projects.
+      </p>
+    </div>
+  </div><hr>
+  
+  <!-- Main Posts -->
+  <div class="w3-card w3-margin" hidden>
+    <div class="w3-container w3-padding">
+      <h4>Main Posts</h4>
+    </div>
+    <ul class="w3-ul w3-hoverable w3-white">
+      {% for main_blog_post in main_blog_posts %}
+      <li class="w3-padding-16">
+        <img src="static/images/{{ main_blog_post.main_image }}" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+        <span class="w3-large">{{ main_blog_post.title }}</span><br>
+      </li>
+      {% endfor %}  
+    </ul>
+  </div>
+  <hr> 
+ 
+  <!-- Labels / tags -->
+  <div class="w3-card w3-margin" hidden>
+    <div class="w3-container w3-padding">
+      <h4>Tags</h4>
+    </div>
+    <div class="w3-container w3-white">
+    <p>
+      {% for tag in tags %}
+      <span class="w3-tag w3-black w3-margin-bottom">{{ tag }}</span>
+      {% endfor %}
+    </p>
+    </div>
+  </div>
+  
+<!-- END Introduction Menu -->
+</div>
+
+<!-- END GRID -->
+</div><br>
+{% endblock %}
