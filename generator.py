@@ -96,7 +96,7 @@ class SiteGenerator(object):
             # Write Blog Post Files
             with open('public/blog/' + blog_file_name, 'w+') as file:
                 html = template.render(
-                    css_style_sheets = self.css_style_sheets,
+                    css_style_sheets = self.css_style_sheets + ['blog.css'],
                     index_ref = "../",
                     blog_post = blog_post,
                     blog_file_contents = blog_file_contents
