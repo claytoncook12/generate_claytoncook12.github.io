@@ -26,6 +26,7 @@ class SiteGenerator(object):
         self.collect_blog_post_tags()
         self.render_main_page()
         self.render_blog_posts()
+        self.html_projects_copy()
         self.finished()
     
     def empty_public(self):
@@ -102,6 +103,13 @@ class SiteGenerator(object):
                     blog_file_contents = blog_file_contents
                 )
                 file.write(html)
+    
+    def html_projects_copy(self):
+        """ Move HTML Projects From Folder to public """
+        try:
+            shutil.copytree('html_projects/', 'public/html_projects')
+        except:
+            print("Error copying html project files.")    
     
     def finished(self):
         """ Finished Message """
