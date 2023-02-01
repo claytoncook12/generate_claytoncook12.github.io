@@ -22,10 +22,12 @@ class SiteGenerator(object):
         self.empty_public()
         self.copy_static()
         self.create_public_blog_folder()
+        self.create_public_tag_folder()
         self.set_main_blog_posts()
         self.collect_blog_post_tags()
         self.render_main_page()
         self.render_blog_posts()
+        self.render_tag_pages()
         self.html_projects_copy()
         self.finished()
     
@@ -49,6 +51,12 @@ class SiteGenerator(object):
             os.mkdir('./public/blog')
         except:
             print("Error Creating Blog Post folder.")
+    
+    def create_public_tag_folder(self):
+        try:
+            os.mkdir('./public/tag')
+        except:
+            print("Error Creating Tag folder.")
     
     def set_main_blog_posts(self):
         """ Sets Main Blog Posts From  blog_post list"""
@@ -104,6 +112,31 @@ class SiteGenerator(object):
                 )
                 file.write(html)
     
+    def render_tag_pages(self):
+        """ Render Tag Pages """
+        print("Rendering Blog post pages")
+
+        for tag in self.tags:
+            template = self.env.get_template('tag/_tag.html')
+            try:
+                file_name = tag + ".html"
+            except:
+                raise Exception(f"Error with setting {tag} html file name")
+            print(f"Creating {file_name}")
+
+            # Create Tag Html Text
+            # TODO
+
+            # Write Tag Files
+            with open('public/tag/' + file_name, 'w+') as file:
+                html = template.render(
+                    css_style_sheets = self.css_style_sheets + ['blog.css'],
+                    index_ref = "../",
+                    tag = tag
+                )
+                file.write(html)
+        
+
     def html_projects_copy(self):
         """ Move HTML Projects From Folder to public """
         try:

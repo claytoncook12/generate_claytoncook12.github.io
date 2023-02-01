@@ -1,0 +1,12 @@
+{% extends '_base.html' %}
+
+{% block css_styles %}
+  {% for css_style in css_style_sheets %}
+    <link rel="stylesheet" href="../static/css/{{ css_style }}">
+  {% endfor %}
+{% endblock %}
+
+{% block content %}
+"tag.html"
+{{ tag }}
+{% endblock %}

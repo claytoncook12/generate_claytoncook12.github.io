@@ -34,7 +34,10 @@
         Tags:<br>
         {% if blog_post.tags %}
           {% for tag in blog_post.tags %}
-            <span class="w3-tag w3-light-grey w3-hover-green">
+            <span 
+              class="w3-tag w3-light-grey w3-hover-green"
+              onclick="location.href='tag/{{ tag }}.html'"
+            >
               {{ tag }}
             </span>
           {% endfor %}
