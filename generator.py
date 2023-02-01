@@ -16,7 +16,7 @@ class SiteGenerator(object):
         self.head_shot = "csc_headshot.svg"
         self.blog_posts = blog_posts
         self.main_blog_posts = []
-        self.tags = set()
+        self.tags = []
 
         # Actions To Generate Site
         self.empty_public()
@@ -65,9 +65,12 @@ class SiteGenerator(object):
     def collect_blog_post_tags(self):
         """ Collect All Tags in Blog Posts """
         try:
+            temp_set = set()
             for blog in blog_posts:
                 for tag in blog["tags"]:
-                    self.tags.add(tag)
+                    temp_set.add(tag)
+            
+            self.tags = list(temp_set)
         except:
             print("Error collecting tags.")
     
