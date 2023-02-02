@@ -16,7 +16,7 @@ class SiteGenerator(object):
         self.head_shot = "csc_headshot.svg"
         self.blog_posts = blog_posts
         self.main_blog_posts = []
-        self.tags = []
+        self.tags = dict()
 
         # Actions To Generate Site
         self.empty_public()
@@ -65,12 +65,13 @@ class SiteGenerator(object):
     def collect_blog_post_tags(self):
         """ Collect All Tags in Blog Posts """
         try:
-            temp_set = set()
             for blog in blog_posts:
                 for tag in blog["tags"]:
-                    temp_set.add(tag)
-            
-            self.tags = list(temp_set)
+                    if tag not in self.tags:
+                        self.tags[tag] = [blog]
+                    else:
+                        self.tags[tag] = self.tags[tag] + [blog]
+
         except:
             print("Error collecting tags.")
     
@@ -117,9 +118,9 @@ class SiteGenerator(object):
     
     def render_tag_pages(self):
         """ Render Tag Pages """
-        print("Rendering Blog post pages")
+        print("Rendering Tag Pages")
 
-        for tag in self.tags:
+        for tag, blog_posts in self.tags.items():
             template = self.env.get_template('tag/_tag.html')
             try:
                 file_name = tag + ".html"
@@ -127,15 +128,13 @@ class SiteGenerator(object):
                 raise Exception(f"Error with setting {tag} html file name")
             print(f"Creating {file_name}")
 
-            # Create Tag Html Text
-            # TODO
-
             # Write Tag Files
             with open('public/tag/' + file_name, 'w+') as file:
                 html = template.render(
                     css_style_sheets = self.css_style_sheets + ['blog.css'],
                     index_ref = "../",
-                    tag = tag
+                    tag = tag,
+                    blog_posts = blog_posts
                 )
                 file.write(html)
         

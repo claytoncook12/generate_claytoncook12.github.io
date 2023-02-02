@@ -14,48 +14,7 @@
 <div class="w3-col l8 s12">
   <!-- Blog entry -->
   {% for blog_post in blog_posts %}
-  <div class="w3-card-4 w3-margin w3-white">
-    <div class="w3-display-container">
-      <img src="static/images/{{ blog_post.main_image }}" alt="image_1400x440" style="width:100%">
-      {% if blog_post.photo_credit %}
-        <div class="w3-tag w3-black w3-tiny w3-display-bottomright">{{ blog_post.photo_credit | safe }}</div>
-      {% endif %}
-    </div>
-    <div class="w3-container">
-      <h3><b>{{ blog_post.title }}</b></h3>
-      <h5><span class="w3-opacity">{{ blog_post.date  }}</span></h5>
-    </div>
-
-    <div class="w3-container">
-      <p>
-        {{ blog_post.short_desc }}
-      </p>
-      <div class="w3-row">
-        Tags:<br>
-        {% if blog_post.tags %}
-          {% for tag in blog_post.tags %}
-            <span 
-              class="w3-tag w3-light-grey w3-hover-green"
-              onclick="location.href='tag/{{ tag }}.html'"
-            >
-              {{ tag }}
-            </span>
-          {% endfor %}
-        {% endif %}
-      </div>
-      <div class="w3-row">
-        <div class="w3-col m8 s12">
-          <p><button 
-            class="w3-button w3-padding-large w3-white w3-border"
-            type="button"
-            onclick="location.href='blog/{{ blog_post.html_file }}'"
-            >
-            <b>READ MORE</b>
-          </button></p>
-        </div>
-      </div>
-    </div>
-  </div>
+    {% include 'partial/_blog_tile.html' %}
   <hr>
   {% endfor %}
 <!-- END BLOG ENTRIES -->
