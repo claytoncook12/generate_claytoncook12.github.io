@@ -12,6 +12,7 @@
 
 <!-- Blog entries -->
 <div class="w3-col l8 s12">
+  <h1 class="w3-center">Blog Posts</h1>
   <!-- Blog entry -->
   {% for blog_post in blog_posts %}
     {% include 'partial/_blog_tile.html' %}
@@ -23,10 +24,8 @@
 <!-- Introduction menu -->
 <div class="w3-col l4">
   <!-- Projects Card -->
+  <h2 class="w3-center">Side Projects</h2>
   <div class="w3-card w3-margin w3-white">
-    <header class="w3-container w3-center">
-      <h3><b><u>Side Projects</u></b></h3>
-    </header>
     <!-- Project 1 -->
     <a
     href="html_projects/auto-foinn-sesium/auto-foinn-sesium.html"
@@ -66,6 +65,7 @@
   </div><hr>
 
   <!-- About Card -->
+  <h2 class="w3-center">About</h2>
   <div class="w3-card-4 w3-margin l4">
   <img src="static/images/{{ head_shot }}" alt="head_shot" style="width:100%">
     <div class="w3-container w3-white">
@@ -94,15 +94,19 @@
   <hr> 
  
   <!-- Labels / tags -->
-  <div class="w3-card w3-margin" hidden>
-    <div class="w3-container w3-padding">
-      <h4>Tags</h4>
-    </div>
+  <h2 class="w3-center">All Tags</h2>
+  <div class="w3-card w3-margin">
     <div class="w3-container w3-white">
     <p>
       {% for tag in tags %}
-      <span class="w3-tag w3-black w3-margin-bottom">{{ tag }}</span>
-      {% endfor %}
+      <span 
+        class="w3-tag w3-light-grey w3-hover-green"
+        style="margin: 1px; padding: 1px;"
+        onclick="location.href='{{index_ref}}/tag/{{ tag }}.html'"
+      >
+        {{ tag }}
+      </span>
+    {% endfor %}
     </p>
     </div>
   </div>
