@@ -1,0 +1,42 @@
+{% extends '_base.html' %}
+
+{% block css_styles %}
+  {% for css_style in css_style_sheets %}
+    <link rel="stylesheet" href="static/css/{{ css_style }}">
+  {% endfor %}
+{% endblock %}
+
+{% block content %}
+<!-- About Card -->
+<h2 class="w3-center">About</h2>
+<div class="w3-row w3-margin w3-center">
+  <div class="w3-col l2 w3-transparent">
+    <!-- center spacer  for main content-->
+    <p></p>
+  </div>
+  <div 
+    class="w3-col w3-card-4 l8 s12 w3-white"
+  >
+    <div class="w3-display-container w3-text-black">
+      <div class="w3-center">
+        <img 
+          src="static/images/{{ head_shot }}"
+          alt="head_shot"
+          class="w3-margin-top"
+          style="width:80%; max-width:400px"
+        >
+      </div>
+    </div>
+
+    <div class="w3-container">
+      <div class="w3-xlarge w3-center">
+        Clayton Cook
+      </div>
+      <p>
+        Hello! This is my budding online webpage where I write about programming
+        interests and projects.
+      </p>
+    </div>
+  </div>
+</div>
+{% endblock %}

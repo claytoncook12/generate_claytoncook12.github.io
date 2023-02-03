@@ -25,6 +25,7 @@ class SiteGenerator(object):
         self.create_public_blog_folder()
         self.create_public_tag_folder()
         self.set_main_blog_posts()
+        self.render_about_page()
         self.collect_blog_post_tags()
         self.render_main_page()
         self.render_blog_posts()
@@ -83,10 +84,20 @@ class SiteGenerator(object):
         with open('public/index.html', 'w+') as file:
             html = template.render(
                 css_style_sheets = self.css_style_sheets,
-                head_shot = self.head_shot,
                 blog_posts = self.blog_posts,
                 main_blog_posts = self.main_blog_posts,
                 tags = self.tags
+            )
+            file.write(html)
+    
+    def render_about_page(self) -> None:
+        """ Create About Page """
+        print("Rendering About page to static files")
+        template = self.env.get_template('_about.html')
+        with open('public/about.html', 'w+') as file:
+            html = template.render(
+                css_style_sheets = self.css_style_sheets,
+                head_shot = self.head_shot,
             )
             file.write(html)
 
