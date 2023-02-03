@@ -85,8 +85,7 @@ class SiteGenerator(object):
                 head_shot = self.head_shot,
                 blog_posts = self.blog_posts,
                 main_blog_posts = self.main_blog_posts,
-                tags = self.tags,
-                index_ref = "./",
+                tags = self.tags
             )
             file.write(html)
 
