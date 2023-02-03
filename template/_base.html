@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 <title>Clayton Cook</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="{{ index_ref }}static/images/cc_cog.svg">
-
+<!-- FontAwesome -->
+<script src="https://kit.fontawesome.com/0f74d8f617.js" crossorigin="anonymous"></script>
 <!-- CSS Styles -->
 {% block css_styles %}{% endblock %}
-
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <style>
 body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 </style>
 </head>
+
 <body class="w3-light-grey">
 
-<!-- Navigation 2 -->
-<div class="w3-bar w3-white" style="border-bottom: green 4px solid;">
+<!-- NavigationBar-->
+<div class="w3-bar w3-white" style="border-bottom: #4BAF50 4px solid;">
   <div class="w3-container w3-center w3-hide-medium w3-hide-small" style="font-size: 24px;">
     <a href="{{ index_ref }}index.html" style="text-decoration: none;">
       <img 
@@ -75,8 +77,24 @@ and is wrapped around the whole page content, except for the footer in this exam
 </div>
 
 <!-- Footer -->
-<footer class="w3-container w3-transparent w3-padding-32 w3-margin-top">
-    Clayton S. Cook - 2022
+<footer 
+  class="w3-container w3-transparent w3-padding-32 w3-margin-top"
+>
+    <a href="https://github.com/claytoncook12" target="_blank"
+      style="text-decoration: none;"
+    >
+      <i 
+        class="fa-brands fa-github w3-large w3-hover-text-green"
+      ></i>
+    </a>
+    <a href="https://www.facebook.com/clayton.cook.165470" target="_blank"
+      style="text-decoration: none;"
+    >
+      <i
+        class="fa-brands fa-facebook w3-large w3-hover-text-green"
+      ></i>
+    </a>
+    - Clayton S. Cook - 2022
 </footer>
 
 <!-- Javascript Files -->

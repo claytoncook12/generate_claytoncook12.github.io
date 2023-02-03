@@ -1,9 +1,10 @@
 """Generates Website"""
 
 import os, shutil
-from datetime import datetime
 from jinja2 import Template, Environment, FileSystemLoader
 
+
+from blog_data.model.blog import Blog
 from blog_data.blog_data import blog_posts
 
 class SiteGenerator(object):
@@ -12,11 +13,11 @@ class SiteGenerator(object):
             loader=FileSystemLoader('template')
         )
 
-        self.css_style_sheets = ["w3.css"]
-        self.head_shot = "csc_headshot.svg"
-        self.blog_posts = blog_posts
-        self.main_blog_posts = []
-        self.tags = dict()
+        self.css_style_sheets: list[str] = ["w3.css"]
+        self.head_shot: str = "csc_headshot.svg"
+        self.blog_posts: list[Blog] = blog_posts
+        self.main_blog_posts: list[str] = []
+        self.tags: dict = dict()
 
         # Actions To Generate Site
         self.empty_public()
@@ -31,7 +32,7 @@ class SiteGenerator(object):
         self.html_projects_copy()
         self.finished()
     
-    def empty_public(self):
+    def empty_public(self) -> None:
         """ Ensure the public directory is empty before generating. """
         try:
             shutil.rmtree('./public') 
@@ -39,43 +40,43 @@ class SiteGenerator(object):
         except:
             print("Error cleaning up old files.")
     
-    def copy_static(self):
+    def copy_static(self) -> None:
         """ Copy static assets to the public directory """
         try:
             shutil.copytree('template/static', 'public/static')
         except:
             print("Error copying static files.")
     
-    def create_public_blog_folder(self):
+    def create_public_blog_folder(self) -> None:
         try:
             os.mkdir('./public/blog')
         except:
             print("Error Creating Blog Post folder.")
     
-    def create_public_tag_folder(self):
+    def create_public_tag_folder(self) -> None:
         try:
             os.mkdir('./public/tag')
         except:
             print("Error Creating Tag folder.")
     
-    def set_main_blog_posts(self):
+    def set_main_blog_posts(self) -> None:
         """ Sets Main Blog Posts From  blog_post list"""
         self.main_blog_posts.append(blog_posts[0])
 
-    def collect_blog_post_tags(self):
+    def collect_blog_post_tags(self) -> None:
         """ Collect All Tags in Blog Posts """
         try:
             for blog in blog_posts:
-                for tag in blog["tags"]:
+                for tag in blog.tags:
                     if tag not in self.tags:
                         self.tags[tag] = [blog]
                     else:
                         self.tags[tag] = self.tags[tag] + [blog]
 
         except:
-            print("Error collecting tags.")
+            raise Exception(f"Error collecting tags.")
     
-    def render_main_page(self):
+    def render_main_page(self) -> None:
         """ Create Index Page """
         print("Rendering Main page to static file.")
         template = self.env.get_template('_index.html')
@@ -89,14 +90,14 @@ class SiteGenerator(object):
             )
             file.write(html)
 
-    def render_blog_posts(self):
+    def render_blog_posts(self) -> None:
         """ Render Blog Post Pages """
         print("Rendering Blog post pages")
         
         for blog_post in blog_posts:
             template = self.env.get_template('blog/_blog.html')
             try:
-                blog_file_name = blog_post["html_file"]
+                blog_file_name = blog_post.html_file
             except:
                 raise Exception(f"{blog_post} needs an html_file set.")
             blog_file_contents = ""
@@ -116,7 +117,7 @@ class SiteGenerator(object):
                 )
                 file.write(html)
     
-    def render_tag_pages(self):
+    def render_tag_pages(self) -> None:
         """ Render Tag Pages """
         print("Rendering Tag Pages")
 
@@ -139,14 +140,14 @@ class SiteGenerator(object):
                 file.write(html)
         
 
-    def html_projects_copy(self):
+    def html_projects_copy(self) -> None:
         """ Move HTML Projects From Folder to public """
         try:
             shutil.copytree('html_projects/', 'public/html_projects')
         except:
             print("Error copying html project files.")    
     
-    def finished(self):
+    def finished(self) -> None:
         """ Finished Message """
         print("Finished webpage creation.")
 
