@@ -2,6 +2,15 @@ from blog_data.model.blog import Blog
 
 blog_posts: list[Blog] = [
     Blog(
+        "Combining MP3 Files with Python and FFmpeg",
+        "February 13, 2023",
+        "A short python script to easily add together mp3 files.",
+        "daniel-schludi-mbGxz7pt0jM-unsplash.jpg",
+        'Photo by <a href="https://unsplash.com/@schluditsch?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Daniel Schludi</a> on <a href="https://unsplash.com/photos/mbGxz7pt0jM?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>',
+        ['Python', 'FFmpeg'],
+        "combining-mp3-file-with-python-and-ffmpeg.html"
+    ),
+    Blog(
         "Shared Custom Angular Form Validation Through A Service",
         "November 1, 2022",
         "Setting up shared custom model validation through an angular service.",
