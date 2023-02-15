@@ -1,1 +1,54 @@
-Entity Framework Core Introduction
+<h2>What is Entity Framework Core (EF Core)?</h2>
+
+<p>
+    EF Core is an object-relational mapper (ORM) that acts as a bridge between .NET objects and a relational database.
+    The benefit in using an ORM is that you an interact with objects within your code instead of using SQL statements.
+</p>
+
+
+<h2>Relational Database Design General Concepts</h2>
+<p>
+    A few short database design concepts that I picked up from the Database Design and Basic SQL in PostgreSQL
+    (University of Michigan) course on Coursera.
+    <ul>
+        <li>Start With a Picture</li>
+        <li>Don't store the same string data twice - use a relationship instead</li>
+        <li>One thing in "real world" and only one thing in the database</li>
+        <li>
+            When creating a database start with the most central object (generally the user object)
+            and build your relationships out
+        </li>
+    </ul>
+</p>
+
+<p>
+    Three types of keys
+    <ul>
+        <li>Primary Key - generally an integer auto-increment field</li>
+        <li>Logical Key - what outside world uses for lookup</li>
+        <li>Foreign Key - generally an integer key pointing to a row in another table</li>
+    </ul>
+</p>
+
+<p>
+    Data Normalization
+    <ul>
+        <li>Do not replicate data, point to data</li>
+        <li>Use integers for Keys and for reference</li>
+    </ul>
+</p>
+
+<h2>Example Project (Console App)</h2>
+
+<h2>Creating a Database From EF Core Code</h2>
+<h3>First Entity</h3>
+<h3>Setup Database Context</h3>
+<h3>Make Migration and Apply Updates</h3>
+
+<h2>Adding and Updating Database Information</h2>
+
+<h2>Additional Entities Creation</h2>
+
+<h2>Navigation Properties</h2>
+<h3>One-to-many Relationship</h3>
+<h3>Many-to-many Relationship</h3>
