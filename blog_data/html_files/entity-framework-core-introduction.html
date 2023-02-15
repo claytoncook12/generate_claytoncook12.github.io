@@ -1,11 +1,3 @@
-<h2>What is Entity Framework Core (EF Core)?</h2>
-
-<p>
-    EF Core is an object-relational mapper (ORM) that acts as a bridge between .NET objects and a relational database.
-    The benefit in using an ORM is that you an interact with objects within your code instead of using SQL statements.
-</p>
-
-
 <h2>Relational Database Design General Concepts</h2>
 <p>
     A few short database design concepts that I picked up from the Database Design and Basic SQL in PostgreSQL
@@ -38,12 +30,78 @@
     </ul>
 </p>
 
+<h2>What is Entity Framework Core (EF Core)?</h2>
+
+<p>
+    EF Core is an object-relational mapper (ORM) that acts as a bridge between .NET objects and a relational database.
+    The benefit in using an ORM is that you an interact with objects within your code instead of using SQL statements.
+</p>
+
 <h2>Example Project (Console App)</h2>
 
+    <p>
+        Starting database picture.
+
+        <div class="w3-container  w3-center w3-padding-small">
+            <img class="w3-image" src="../static/images/image0007.png" alt="starting-picture">
+        </div>
+    </p>
+
+    <p>
+        Next we will create a console app within Visual Studio 2022 and added the needed NuGet packages.
+
+        <div class="w3-container  w3-center w3-padding-small">
+            <img class="w3-image" src="../static/images/image0008.png" alt="console-app-create">
+        </div>
+
+        <div class="w3-container  w3-center w3-padding-small">
+            <img class="w3-image" src="../static/images/image0009.png" alt="nuget-packages">
+        </div>
+    </p>
+
 <h2>Creating a Database From EF Core Code</h2>
-<h3>First Entity</h3>
-<h3>Setup Database Context</h3>
-<h3>Make Migration and Apply Updates</h3>
+    <h3>First Entity</h3>
+
+    <p>
+        An entity is an EF Core object that maps to one or more tables
+        in a database. This is the basic building block in EF Core. We will
+        create our first entity, Student.
+
+        <div class="w3-container  w3-center w3-padding-small">
+            <img class="w3-image" src="../static/images/image0010.png" alt="student-entity">
+        </div>
+    </p>
+    
+    <h3>Setup Database Context</h3>
+    <p>
+        Now we will setup the database context. This database context is the interface EF Core has between
+        the C# code and the database. We will setup a database context for a local SQLite database.
+
+        <div class="w3-container  w3-center w3-padding-small">
+            <img class="w3-image" src="../static/images/image0011.png" alt="database-context-sqlite">
+        </div>
+    </p>
+
+    <h3>Make Migration and Apply Updates</h3>
+    <p>
+        So now that there is an entity and the database context is setup we can apply those to a database.
+        The state of the database is managed and monitored through Migrations. These migrations need to be
+        applied to the database to ensure that the database matches the C# code. We can apply these
+        migrations within the <code>Package Manager Console</code> in Visual Studio 2022.
+
+        <div class="w3-code notranslate"><pre>
+Add-Migration [Migration Name]
+Update-Database
+</pre></div>
+
+        Once those migrations are applied then EF Core will add a <code>Migrations</code> folder that keeps
+        information about the state of the database.
+
+        <div class="w3-container  w3-center w3-padding-small">
+            <img class="w3-image" src="../static/images/image0012.png" alt="database-migrations-applied">
+        </div>
+
+    </p>
 
 <h2>Adding and Updating Database Information</h2>
 
