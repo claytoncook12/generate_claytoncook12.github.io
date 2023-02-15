@@ -104,9 +104,163 @@ Update-Database
     </p>
 
 <h2>Adding and Updating Database Information</h2>
+    <p>
+        Adding student data to the database.
 
-<h2>Additional Entities Creation</h2>
+        <div class="w3-container  w3-center w3-padding-small">
+            <img class="w3-image" src="../static/images/image0013.png" alt="adding-student-data">
+        </div>
+    </p>
+
+    <p>
+        Then updating that information in the database.
+        
+        <div class="w3-container  w3-center w3-padding-small">
+            <img class="w3-image" src="../static/images/image0014.png" alt="updating-student-data">
+        </div>
+    </p>
 
 <h2>Navigation Properties</h2>
+
+    <p>
+        Navigation Properties is how EF Core establishes connections between entities. EF Core then 
+        converts these into database relationships. A database <b>one-to-many</b> relationship is where one
+        record in a table can be associated with one or more records in another table. In our example
+        this is the Classes to Teacher Table Connection. A database <b>many-to-many</b> relationship is 
+        where multiple records in a table can be associated with multiple records in another table.
+        In our example this is the StudentClasses Table
+    </p>
+
 <h3>One-to-many Relationship</h3>
+
+    <p>
+        Adding student data to the database.
+
+        <div class="w3-container  w3-center w3-padding-small">
+            <img class="w3-image" src="../static/images/image0015.png" alt="adding-teacher-to-classes">
+        </div>
+    </p>
+
+    <p>
+        Then updating that information in the database.
+        
+        <div class="w3-container  w3-center w3-padding-small">
+            <img class="w3-image" src="../static/images/image0016.png" alt="teacher-list-to-classes">
+        </div>
+    </p>
+
+    <p>
+        Then adding EF models to DbContext then <code>Add-Migration</code> and <code>Update-Database</code>
+        
+        <div class="w3-container  w3-center w3-padding-small">
+            <img class="w3-image" src="../static/images/image0017.png" alt="adding-ef-dbcontext">
+        </div>
+    </p>
+
+    <p>
+        Creating some <code>Teacher</code> and <code>Class</code> data.
+        
+        <div class="w3-container  w3-center w3-padding-small">
+            <img class="w3-image" src="../static/images/image0018.png" alt="add-data">
+        </div>
+
+        <div class="w3-container  w3-center w3-padding-small">
+            <img class="w3-image" src="../static/images/image0019.png" alt="sqlite-data-view">
+        </div>
+    </p>
+
 <h3>Many-to-many Relationship</h3>
+
+    <p>
+       Now we will create a <b>many-to-many</b> relationship.
+       
+       <div class="w3-container  w3-center w3-padding-small">
+            <img class="w3-image" src="../static/images/image0020.png" alt="many-to-many-StudentClass">
+        </div>
+    </p>
+
+    <p>
+        Add navigation properties to <code>Class</code> and <code>Student</code> entities.
+        
+        <div class="w3-container  w3-center w3-padding-small">
+             <img class="w3-image" src="../static/images/image0021.png" alt="many-to-many-Class-and-Student">
+         </div>
+     </p>
+
+     <p>
+        Add navigation properties to <code>Class</code> and <code>Student</code> entities.
+        
+        <div class="w3-container  w3-center w3-padding-small">
+             <img class="w3-image" src="../static/images/image0021.png" alt="many-to-many-Student">
+         </div>
+
+         <div class="w3-container  w3-center w3-padding-small">
+            <img class="w3-image" src="../static/images/image0022.png" alt="many-to-many-Class">
+        </div>
+     </p>
+
+     <p>
+        Add Fluent API to <code>OnModelCreating</code> in <code>DatabaseContext</code> to establish
+        connection.
+
+        <div class="w3-container  w3-center w3-padding-small">
+            <img class="w3-image" src="../static/images/image0023.png" alt="many-to-many-conection">
+        </div>
+
+        Look at the connection in the migration.
+
+        <div class="w3-container  w3-center w3-padding-small">
+            <img class="w3-image" src="../static/images/image0024.png" alt="many-to-many-conection">
+        </div>
+     </p>
+
+     <p>
+        Adding data to the database.
+
+        <div class="w3-container  w3-center w3-padding-small">
+            <img class="w3-image" src="../static/images/image0025.png" alt="adding-many-to-many-1">
+        </div>
+        <div class="w3-container  w3-center w3-padding-small">
+            <img class="w3-image" src="../static/images/image0026.png" alt="adding-many-to-many-2">
+        </div>
+        <div class="w3-container  w3-center w3-padding-small">
+            <img class="w3-image" src="../static/images/image0027.png" alt="adding-many-to-many-3">
+        </div>
+        <div class="w3-container  w3-center w3-padding-small">
+            <img class="w3-image" src="../static/images/image0028.png" alt="adding-many-to-many-4">
+        </div>
+     </p>
+
+     <p>
+        Then can use <code>.Include()</code> and <code>.ThenInclude()</code> to add together connected
+        data.
+
+        <div class="w3-container  w3-center">
+            <img class="w3-image" src="../static/images/image0029.png" alt="using-include">
+        </div>
+     </p>
+
+<h2>References</h2>
+
+    <p>
+        <ul>
+            <li>Beginning Entity Framework Core 5 From Novice to Professional (2021) Eric Vogel</li>
+            <li>Database Design and Basic SQL in PostgreSQL (University of Michigan) through Cousera</li>
+            <li>
+                <a href="https://www.fearofoblivion.com/dont-let-ef-call-the-shots" target="_blank">
+                    https://www.fearofoblivion.com/dont-let-ef-call-the-shots
+                </a>
+            </li>
+            <li>Getting Started with Entity Framework Core [1 of 5] | Entity Framework Core for Beginners</li>
+            <li>
+                <a href="https://www.youtube.com/watch?v=SryQxUeChMc"  target="_blank">
+                    https://www.youtube.com/watch?v=SryQxUeChMc
+                </a>
+            </li>
+            <li>
+                <a href="https://learn.microsoft.com/en-us/ef/core/"  target="_blank">
+                    https://learn.microsoft.com/en-us/ef/core/
+                </a>
+            </li>
+        </ul>
+    </p>

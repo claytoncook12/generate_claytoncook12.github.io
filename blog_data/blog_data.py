@@ -8,7 +8,7 @@ blog_posts: list[Blog] = [
         and connect up to a local SQLite database.""",
         "michael-benz--IZ2sgQKIhM-unsplash.jpg",
         'Photo by <a href="https://unsplash.com/@michaelbenz?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Michael Benz</a> on <a href="https://unsplash.com/wallpapers/nature/forest?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>',
-        ['.NET', 'C#', 'Database'],
+        ['DotNET', 'C-Sharp', 'Database'],
         "entity-framework-core-introduction.html"
     ),
     Blog(
