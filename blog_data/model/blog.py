@@ -1,5 +1,13 @@
+import re
 import typing as t
 import datetime as datetime
+
+def slugify(s: str) -> str:
+  s = s.lower().strip()
+  s = re.sub(r'[^\w\s-]', '', s)
+  s = re.sub(r'[\s_-]+', '-', s)
+  s = re.sub(r'^-+|-+$#.', '', s)
+  return s
 
 class Blog:
     def __init__(
