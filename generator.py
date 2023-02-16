@@ -4,7 +4,7 @@ import os, shutil
 from jinja2 import Template, Environment, FileSystemLoader
 
 
-from blog_data.model.blog import Blog
+from blog_data.model.blog import Blog, Tag
 from blog_data.blog_data import blog_posts
 
 class SiteGenerator(object):
@@ -67,12 +67,17 @@ class SiteGenerator(object):
     def collect_blog_post_tags(self) -> None:
         """ Collect All Tags in Blog Posts """
         try:
+            temp_tags = dict()
             for blog in blog_posts:
                 for tag in blog.tags:
-                    if tag not in self.tags:
-                        self.tags[tag] = [blog]
+                    if str(tag) not in temp_tags:
+                        temp_tags[str(tag)] = [blog]
                     else:
-                        self.tags[tag] = self.tags[tag] + [blog]
+                        temp_tags[str(tag)] = temp_tags[str(tag)] + [blog]
+            
+            ## Convert string Key to Tag Obj 
+            for key, value in temp_tags.items():
+                self.tags[Tag(key)] = value
 
         except:
             raise Exception(f"Error collecting tags.")
@@ -135,7 +140,7 @@ class SiteGenerator(object):
         for tag, blog_posts in self.tags.items():
             template = self.env.get_template('tag/_tag.html')
             try:
-                file_name = tag + ".html"
+                file_name = tag.tag_slug() + ".html"
             except:
                 raise Exception(f"Error with setting {tag} html file name")
             print(f"Creating {file_name}")

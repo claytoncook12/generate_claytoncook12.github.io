@@ -9,6 +9,19 @@ def slugify(s: str) -> str:
   s = re.sub(r'^-+|-+$#.', '', s)
   return s
 
+class Tag:
+    def __init__(
+            self,
+            tag: str
+    ):
+        self.tag = tag
+
+    def __str__(self) -> str:
+        return self.tag
+    
+    def tag_slug(self) -> str:
+        return slugify(self.tag)
+
 class Blog:
     def __init__(
         self,
@@ -17,7 +30,7 @@ class Blog:
         short_desc: str,
         main_image: str,
         photo_credit: str,
-        tags: t.List[str],
+        tags: t.List[Tag],
         html_file: str
     ):
         self.title = title
@@ -25,5 +38,5 @@ class Blog:
         self.short_desc = short_desc
         self.main_image = main_image
         self.photo_credit = photo_credit
-        self.tags = tags
+        self.tags = [Tag(tag) for tag in tags]
         self.html_file = html_file

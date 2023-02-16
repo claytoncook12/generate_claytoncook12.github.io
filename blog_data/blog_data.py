@@ -3,12 +3,12 @@ from blog_data.model.blog import Blog
 blog_posts: list[Blog] = [
     Blog(
         "Introduction of Database Design and Entity Framework Core 2.2.1",
-        "NEED DATE",
+        "February 16, 2023",
         """An overview of general database design principles, how to use Entity Framework Core 
         and connect up to a local SQLite database.""",
         "michael-benz--IZ2sgQKIhM-unsplash.jpg",
         'Photo by <a href="https://unsplash.com/@michaelbenz?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Michael Benz</a> on <a href="https://unsplash.com/wallpapers/nature/forest?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>',
-        ['DotNET', 'C-Sharp', 'Database'],
+        ['.NET', 'C#', 'Database'],
         "entity-framework-core-introduction.html"
     ),
     Blog(

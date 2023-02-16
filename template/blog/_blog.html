@@ -25,7 +25,7 @@
         {% for tag in blog_post.tags %}
           <span 
             class="w3-tag w3-light-grey w3-hover-green"
-            onclick="location.href='{{index_ref}}/tag/{{ tag }}.html'"
+            onclick="location.href='{{index_ref}}/tag/{{ tag.tag_slug() }}.html'"
           >
             {{ tag }}
           </span>
