@@ -2,6 +2,17 @@ from blog_data.model.blog import Blog
 
 blog_posts: list[Blog] = [
     Blog(
+        "Using Interfaces to Insure Behavior",
+        "NEED TO ADD",
+        """Interfaces ensure that a class behaves in a certain way. We can be
+        confident that an certain method or property is called it will be implemented
+        in the class. Some examples will be given in C#, python, and typescript.""",
+        "ganapathy-kumar-L75D18aVal8-unsplash.jpg",
+        'Photo by <a href="https://unsplash.com/@gkumar2175?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Ganapathy Kumar</a> on <a href="https://unsplash.com/images/nature/desert?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>',
+        ['Interface','C#','Python','Typescript'],
+        "using-interfaces-to-insure-behavior.html"
+    ),
+    Blog(
         "Introduction of Database Design and Entity Framework Core 2.2.1",
         "February 16, 2023",
         """An overview of general database design principles, how to use Entity Framework Core 

@@ -23,6 +23,29 @@ class Tag:
         return slugify(self.tag)
 
 class Blog:
+    """
+    A class used to represent a Blog Post
+
+    ...
+
+    Attributes
+    ----------
+    title
+        The blog article title
+    date
+        The date that will be displayed for when the blog post was written
+    short_desc
+        A short description of what the blog article is written about
+    main_image
+        an image with size 1400x440
+    photo_credit
+        a html element with photo credit Ex: Photo by <a href="">Photographer</a>
+    tags
+        A collection of type tags
+    html_file
+        the .html file that has the blog html code located in the html_file folder
+    """
+
     def __init__(
         self,
         title: str,
