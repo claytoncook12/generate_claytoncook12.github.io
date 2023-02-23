@@ -3,7 +3,7 @@ from blog_data.model.blog import Blog
 blog_posts: list[Blog] = [
     Blog(
         "Using Interfaces to Ensure Behavior",
-        "NEED TO ADD",
+        "Febuary 23, 2023",
         """Interfaces ensure that a class behaves in a certain way and expresses
         polymorphism between different classes. We will look at how to implement
         interfaces in C#, Python, and Typescript.""",

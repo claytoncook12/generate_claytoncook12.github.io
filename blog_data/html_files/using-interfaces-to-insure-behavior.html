@@ -125,7 +125,7 @@ Triangle Area:
 2</code></pre>
 </p>
 
-<h2>Creating an Interface in 
+<h2>Creating an Interface (Protocol) in 
     <span><img style="max-height: 32px;" src="../static/images/programming_images/python.svg" alt="python image"></span>
 </h2>
 
@@ -194,8 +194,72 @@ if __name__=="__main__":
     <span><img style="max-height: 32px; vertical-align: top;" src="../static/images/programming_images/typescript.svg" alt="typescript image"></span>
 </h2>
 <p>
-    Now I will give the same example in the <code>Typescript</code> programming language.
+    Now I will give the same example in the <code>Typescript</code> programming language. This example is
+    very similar to the <code>Python</code> code example above. The place where the interface is
+    checked is at the time of use in the <code>area()</code> function.
 </p>
+
+<pre><code class="language-typescript">interface Shape2D {
+    // Properties
+    height: number;
+    width: number;
+    // Method
+    area(): number;
+}
+
+function area(shape:Shape2D): number {
+    return shape.area();
+}
+
+class Rectangle {
+    height: number;
+    width: number;
+
+    constructor(height: number, width: number) {
+        this.height = height;
+        this.width = width;
+    }
+
+    area(): number {
+        return this.height * this.width;
+    }
+}
+
+class Triangle {
+    height: number;
+    width: number;
+
+    constructor(height: number, width: number) {
+        this.height = height;
+        this.width = width;
+    }
+
+    area(): number {
+        return 0.5 * this.height * this.width;
+    }
+}
+
+class Sphere {
+    radius: number;
+
+    constructor(radius: number) {
+        this.radius = radius;
+    }
+
+    volume(): number {
+        return (4/3) * 3.14 * this.radius ** 3;
+    }
+}
+
+console.log(area(new Rectangle(1,4)));
+console.log(area(new Triangle(1,4)));
+console.log(area(new Sphere(4))); // <- Will Show Error when Compiled Due to
+                                  //    Interface Error</code></pre>
+
+<h4 class="w3-center"><u><code>Typescript Type Error in Visual Studio Code</code></u></h4>
+<div class="w3-container  w3-center w3-padding-small">
+    <img class="w3-image" src="../static/images/image0031.png" alt="Error in Typescript">
+</div>
 
 <h3>Additional Resources</h3>
 <p>
@@ -206,28 +270,28 @@ if __name__=="__main__":
                 Codeacademy: Learn C# Introduction to Interfaces
             </a>
         </li>
-    </ul>
-    <ul>
         <li>
             <a  class="w3-hover-text-green"
                 href="https://www.youtube.com/watch?v=xvb5hGLoK0A" target="_blank">
                 Protocol Or ABC In Python - When to use which one?
             </a>
         </li>
-    </ul>
-    <ul>
         <li>
             <a  class="w3-hover-text-green"
                 href="https://www.pythontutorial.net/python-oop/python-protocol/" target="_blank">
                 https://www.pythontutorial.net/python-oop/python-protocol/
             </a>
         </li>
-    </ul>
-    <ul>
         <li>
             <a  class="w3-hover-text-green"
                 href="https://andrewbrookins.com/technology/building-implicit-interfaces-in-python-with-protocol-classes/" target="_blank">
                 https://andrewbrookins.com/technology/building-implicit-interfaces-in-python-with-protocol-classes/
+            </a>
+        </li>
+        <li>
+            <a  class="w3-hover-text-green"
+                href="https://www.typescriptlang.org/docs/handbook/2/objects.html" target="_blank">
+                Typescript Handbook v2 Object Types
             </a>
         </li>
     </ul>
