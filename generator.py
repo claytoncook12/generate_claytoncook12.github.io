@@ -126,7 +126,7 @@ class SiteGenerator(object):
             # Write Blog Post Files
             with open('public/blog/' + blog_file_name, 'w+') as file:
                 html = template.render(
-                    css_style_sheets = self.css_style_sheets + ['blog.css'],
+                    css_style_sheets = self.css_style_sheets + ['clayton-cook-website.css'],
                     index_ref = "../",
                     blog_post = blog_post,
                     blog_file_contents = blog_file_contents
@@ -148,7 +148,7 @@ class SiteGenerator(object):
             # Write Tag Files
             with open('public/tag/' + file_name, 'w+') as file:
                 html = template.render(
-                    css_style_sheets = self.css_style_sheets + ['blog.css'],
+                    css_style_sheets = self.css_style_sheets + ['clayton-cook-website.css'],
                     index_ref = "../",
                     tag = tag,
                     blog_posts = blog_posts

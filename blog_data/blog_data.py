@@ -2,14 +2,14 @@ from blog_data.model.blog import Blog
 
 blog_posts: list[Blog] = [
     Blog(
-        "Using Interfaces to Insure Behavior",
+        "Using Interfaces to Ensure Behavior",
         "NEED TO ADD",
-        """Interfaces ensure that a class behaves in a certain way. We can be
-        confident that an certain method or property is called it will be implemented
-        in the class. Some examples will be given in C#, python, and typescript.""",
+        """Interfaces ensure that a class behaves in a certain way and expresses
+        polymorphism between different classes. We will look at how to implement
+        interfaces in C#, Python, and Typescript.""",
         "ganapathy-kumar-L75D18aVal8-unsplash.jpg",
         'Photo by <a href="https://unsplash.com/@gkumar2175?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Ganapathy Kumar</a> on <a href="https://unsplash.com/images/nature/desert?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>',
-        ['Interface','C#','Python','Typescript'],
+        ['Interface', 'Protocol','C#','Python','Typescript'],
         "using-interfaces-to-insure-behavior.html"
     ),
     Blog(

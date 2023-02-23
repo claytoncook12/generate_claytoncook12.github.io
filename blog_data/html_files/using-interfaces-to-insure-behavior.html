@@ -1,3 +1,234 @@
+<h2>What is an Interface?</h2>
+
 <p>
-    Place Holder
+    An interface (called this in C# and Typescript) or protocol (called this in Python)
+    contains definitions for a groups of related behaviors
+    that a class can implement. The great benefit of using interfaces
+    is that we can guarantee how a class will behave without the
+    need for inheritance.
+</p>
+
+<p>
+    Interfaces show how certain classes are related to one another.
+    Two classes that have the same interface
+    will have shared behaviors. In <i>the Pragmatic Programmer</i> states this benefit
+    Tip 52 <i>"Prefer Interfaces to Express Polymorphism"</i>. With an added statement
+    that  <i>"interfaces and protocols give us polymorphism without inheritance."</i>
+</p>
+
+<h2>Creating an Interface in 
+    <span><img style="max-height: 32px;" src="../static/images/programming_images/c-sharp.svg" alt="C# image"></span>
+</h2>
+<p>
+    In our <code>C#</code> example we will creating two 2D shape classes
+    what will use an interface to ensure each 2D shape class have similar behavior.
+    We will start by defining our <code>Shape</code> interface within <code>C#</code>
+    by using the <code>interface</code> keyword. This interface will ensure that all
+    class that share this interface have a <code>Height</code> and <code>Width</code>
+    property as well as a <code>Area</code> method. It is typical practice in <code>C#</code>
+    to define the interface with a <code>I</code> at the beginning of the name.
+</p>
+
+<h4 class="w3-center"><u><code>C# IShape Interface</code></u></h4>
+<p>
+<pre><code class="language-cs">interface IShape
+{
+    // Properties
+    double Height { get; }
+    double Width { get; }
+    // Method
+    double Area();
+}</code></pre>
+</p>
+
+<p>
+    Now that we have our <code>interface</code> defined we can use it with the <code>":"</code>
+    notation to ensure that our <code>Rectangle</code> and <code>Triangle</code> class have the
+    same behavior by checking that they have the proper properties and methods.
+</p>
+
+<h4 class="w3-center"><u><code>C# Rectangle Class</code></u></h4>
+<p>
+<pre><code class="language-cs">class Rectangle : IShape
+{
+    public Rectangle(
+        double height,
+        double width
+    )
+    {
+        Height = height;
+        Width = width;
+    }
+    public double Height { get; }
+    public double Width { get; }
+    public double Area()
+    {
+        return Height * Width;
+    }
+}</code></pre>
+</p>
+
+<h4 class="w3-center"><u><code>C# Triangle Class</code></u></h4>
+<p>
+<pre><code class="language-cs">class Triangle:IShape
+{
+    public Triangle(
+        double height,
+        double width
+    )
+    {
+        Height = height;
+        Width = width;
+    }
+    public double Height { get; }
+    public double Width { get; }
+    public double Area()
+    {
+        return 0.5 * Height * Width;
+    }
+}</code></pre>
+</p>
+
+<p>
+    With those class in place we can run a console program to create a
+    Rectangle and Triangle object and be certain that we can call the
+    <code>Area()</code> method to return the area of the shape.
+</p>
+
+<h4 class="w3-center"><u><code>C# Console App</code></u></h4>
+<p>
+<pre><code class="language-cs">using System;
+
+namespace Interfaces
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Rectangle rectangle1 = new Rectangle(1, 4);
+            Console.WriteLine($"Rectange Area:");
+            Console.WriteLine($"{rectangle1.Area()}");
+
+            Triangle triangle1 = new Triangle(1, 4);
+            Console.WriteLine($"Triangle Area:");
+            Console.WriteLine($"{triangle1.Area()}");
+        }
+    }
+}</code></pre>
+</p>
+
+<h4 class="w3-center"><u><code>C# Console Output</code></u></h4>
+<p>
+<pre><code class="language-powershell">Rectange Area:
+4
+Triangle Area:
+2</code></pre>
+</p>
+
+<h2>Creating an Interface in 
+    <span><img style="max-height: 32px;" src="../static/images/programming_images/python.svg" alt="python image"></span>
+</h2>
+
+<p>
+    Now I will give an example of in the <code>Python</code> programming language. Within
+    python interfaces are called <code>Protocol</code> and can be imported from the
+    <code>typing</code> standard python module. The Protocol class was first added
+    in Python 3.8. Since python is a dynamically typed program the point at which the
+    Protocol is check is not when the class is created, as in <code>C#</code> above, but when the class
+    is going to be used by a function. In the example this is when the <code>area()</code> function
+    is called and the <code>Shape2DProtocol</code> type is checked. Also, important to note is the
+    use of <i>...</i> within the functions defined in a <code>Protocol</code>.
+</p>
+
+<h4 class="w3-center"><u><code>Python Interface(Protocol) Example</code></u></h4>
+<p>
+<pre><code class="language-python"># Python 3.10.0
+from typing import Protocol
+
+class Shape2DProtocol(Protocol):
+    height: float
+    width: float
+    
+    def area(self) -> float:
+        ...                  # <- Note Use of "..." for protocol method
+
+def area(shape: Shape2DProtocol) -> float:
+    return shape.area()
+
+class Rectangle:
+    def __init__(self, height: float, width: float) -> None:
+        self.height = height
+        self.width = width
+    
+    def area(self) -> float:
+        return self.height * self.width
+    
+class Triangle:
+    def __init__(self, height: float, width: float) -> None:
+        self.height = height
+        self.width = width
+    
+    def area(self) -> float:
+        return 0.5 * self.height * self.width
+
+class Sphere:
+    def __init__(self, radius: float) -> None:
+        self.radius = radius
+    
+    def volume(self) -> float:
+        return (4/3) * 3.14 * self.radius ** 3
+
+if __name__=="__main__":
+    print(area(Rectangle(1,4)))
+    print(area(Triangle(1,4)))
+    print(area(Sphere(4)))    # <- Will Give Error with Python Type Checker MyPy
+                              #    before the script is run</code></pre>
+</p>
+
+<h4 class="w3-center"><u><code>Python Type Error in Visual Studio Code</code></u></h4>
+<div class="w3-container  w3-center w3-padding-small">
+    <img class="w3-image" src="../static/images/image0030.png" alt="Error in Python">
+</div>
+
+<h2>Creating an Interface in 
+    <span><img style="max-height: 32px; vertical-align: top;" src="../static/images/programming_images/typescript.svg" alt="typescript image"></span>
+</h2>
+<p>
+    Now I will give the same example in the <code>Typescript</code> programming language.
+</p>
+
+<h3>Additional Resources</h3>
+<p>
+    <ul>
+        <li>
+            <a  class="w3-hover-text-green"
+                href="https://www.codecademy.com/courses/learn-c-sharp/lessons/csharp-interfaces/exercises/introduction-to-interfaces" target="_blank">
+                Codeacademy: Learn C# Introduction to Interfaces
+            </a>
+        </li>
+    </ul>
+    <ul>
+        <li>
+            <a  class="w3-hover-text-green"
+                href="https://www.youtube.com/watch?v=xvb5hGLoK0A" target="_blank">
+                Protocol Or ABC In Python - When to use which one?
+            </a>
+        </li>
+    </ul>
+    <ul>
+        <li>
+            <a  class="w3-hover-text-green"
+                href="https://www.pythontutorial.net/python-oop/python-protocol/" target="_blank">
+                https://www.pythontutorial.net/python-oop/python-protocol/
+            </a>
+        </li>
+    </ul>
+    <ul>
+        <li>
+            <a  class="w3-hover-text-green"
+                href="https://andrewbrookins.com/technology/building-implicit-interfaces-in-python-with-protocol-classes/" target="_blank">
+                https://andrewbrookins.com/technology/building-implicit-interfaces-in-python-with-protocol-classes/
+            </a>
+        </li>
+    </ul>
 </p>
