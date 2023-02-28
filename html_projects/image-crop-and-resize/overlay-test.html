@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      .container {
+        margin: auto;
+        }
+      .image-container {
+        position: relative;
+        max-width: 500px;
+      }
+      .image {
+        position: absolute;
+        left: 2px; /*Set offset For 2px border in overlay */
+        top: 2px;
+        max-width: 500px;
+        max-height: 330px;
+      }
+      .overlay {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        border: 2px dashed red;
+      }
+      .controls-container {
+        position: static;
+        margin-top: 370px;
+        padding-bottom: 50px;
+        width: 500px;
+        height: 500px;
+        background-color: rgb(197, 197, 197);
+      }
+      .controls {
+        float: left;
+        text-align: right;
+        margin-right: 15px;
+        margin-left: 15px;
+      }
+      .controls input {
+        width: 50px;
+      }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Overlay image</h2>
+        <div>
+            <div class="image-container">
+                <img class="image" src="img/bree-anne-rNFo69CnKK4-unsplash.jpg" id="working-image">
+                <div class="overlay" hidden>
+                </div>
+            </div>
+        </div>
+        <div class="controls-container">
+            <div class="controls">
+                <h3>Image Crop Parameters</h3>
+                <label for="cropX">X Value Top Left:</label>
+                <input type="number" value="0" min="0" id="cropX" name="cropX"><br>
+                <label for="cropY">Y Value Top Left:</label>
+                <input type="number" value="0" min="0" id="cropY" name="cropY"><br>
+                <label for="cropXLength">Crop X Length:</label>
+                <input type="number" value="0" min="0" id="cropXLength" name="cropXLength"><br>
+                <label for="cropYLength">Crop Y Length:</label>
+                <input type="number" value="0" min="0" id="cropYLength" name="cropYLength"><br>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script-overlay-test.js"></script>
+</body>
+</html>
