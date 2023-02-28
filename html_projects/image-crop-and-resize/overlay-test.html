@@ -44,13 +44,14 @@
         width: 50px;
       }
     </style>
+    <link rel="stylesheet" href="css/style-test.css">
 </head>
 <body>
     <div class="container">
-        <h2>Overlay image</h2>
+        <h2>Overlay Crop</h2>
         <div>
-            <div class="image-container">
-                <img class="image" src="img/bree-anne-rNFo69CnKK4-unsplash.jpg" id="working-image">
+            <div class="image-container" hidden>
+                <img class="image" src="" id="working-image">
                 <div class="overlay" hidden>
                 </div>
             </div>
@@ -66,9 +67,17 @@
                 <input type="number" min="0" id="cropXLength" name="cropXLength"><br>
                 <label for="cropYLength">Crop Y Length:</label>
                 <input type="number" min="0" id="cropYLength" name="cropYLength"><br>
+                <button onclick="reset();">Reset Overlay</button><br>
+                <button class="choose-img">Load Image</button>
             </div>
         </div>
     </div>
+
+    <!-- File Input -->
+    <input type="file" class="file-input" accept="image/*" hidden>
+
+    <!-- SnackBar Tips -->
+    <div id="snackbar">Default Text</div>
 
     <script src="js/script-overlay-test.js"></script>
 </body>
