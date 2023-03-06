@@ -168,6 +168,3 @@ const showSnackbar = (textString) => {
 
 fileInput.addEventListener("change", loadImage);
 chooseImgBtn.addEventListener("click", () => fileInput.click());
-
-// https://stackoverflow.com/questions/26015497/how-to-resize-then-crop-an-image-with-canvas
-// https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/drawImage
