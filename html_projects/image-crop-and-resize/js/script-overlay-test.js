@@ -125,6 +125,39 @@ const loadImage = () => {
     });
 }
 
+const saveCropImage = () => {
+    console.log("Saving Crop Image File.");
+
+    // Get Source Image Scale
+    scaleFactor =  workingImage.naturalWidth / workingImage.clientWidth;
+    
+    // Source Image Properties
+    sx = parseInt(cropX.value * scaleFactor);
+    sy = parseInt(cropY.value * scaleFactor);
+    sWidth = parseInt(cropXLength.value * scaleFactor);
+    sHeight = parseInt(cropYLength.value * scaleFactor);
+
+    // Destination Canvas
+    dx = 0;
+    dy = 0;
+    dWidth = parseInt(cropXLength.value);
+    dHeight = parseInt(cropYLength.value);
+    
+    // Create New Image
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+    canvas.width = dWidth;
+    canvas.height = dHeight;
+    ctx.drawImage(workingImage, sx, sy, sWidth, sHeight,
+        dx, dy, dWidth, dHeight);
+    
+    // Down Load New Image
+    const link = document.createElement("a");
+    link.download = "image.jpg";
+    link.href = canvas.toDataURL();
+    link.click();
+}
+
 // Snack Bar Functions
 const showSnackbar = (textString) => {
     const snackbar = document.getElementById("snackbar");
@@ -136,7 +169,5 @@ const showSnackbar = (textString) => {
 fileInput.addEventListener("change", loadImage);
 chooseImgBtn.addEventListener("click", () => fileInput.click());
 
-//TODO
-throw new Error('Not Started Implementing Crop Functionality.')
 // https://stackoverflow.com/questions/26015497/how-to-resize-then-crop-an-image-with-canvas
 // https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/drawImage
