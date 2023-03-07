@@ -18,6 +18,7 @@ const updateWorkingImage = () => {
     defaultOverlayLocation();
     scaleOverlay();
     setImageCropParameters();
+    hideAddImgSvg();
 }
 
 const defaultOverlayLocation = () => {
@@ -42,6 +43,10 @@ const setImageCropParameters = () => {
     cropY.max = Math.round(workingImageHeight);
     cropYLength.value = Math.round(workingImageHeight);
     cropYLength.max = Math.round(workingImageHeight);
+}
+
+const hideAddImgSvg = () => {
+    addImgSvg.hidden = true;
 }
 
 const cropOutsideWidthBound = () => {
@@ -111,14 +116,12 @@ cropYLength.addEventListener("change", (event) => {
 })
 
 const reset = () => {
-    addImgSvg.removeAttribute("hidden");
     defaultOverlayLocation();
     scaleOverlay();
     setImageCropParameters();
 }
 
 const loadImage = () => {
-    addImgSvg.setAttribute("hidden");
     let file = fileInput.files[0];
     if(!file) return;
     workingImage.src = URL.createObjectURL(file);
