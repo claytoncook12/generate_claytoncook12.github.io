@@ -1,5 +1,6 @@
 const fileInput = document.querySelector(".file-input"),
 chooseImgBtn = document.querySelector(".choose-img"),
+addImgSvg = document.querySelector(".image-placeholder"),
 imageContainer = document.querySelector(".image-container"),
 workingImage = document.getElementById("working-image"),
 overlay = document.querySelector(".overlay"),
@@ -110,12 +111,14 @@ cropYLength.addEventListener("change", (event) => {
 })
 
 const reset = () => {
+    addImgSvg.removeAttribute("hidden");
     defaultOverlayLocation();
     scaleOverlay();
     setImageCropParameters();
 }
 
 const loadImage = () => {
+    addImgSvg.setAttribute("hidden");
     let file = fileInput.files[0];
     if(!file) return;
     workingImage.src = URL.createObjectURL(file);
@@ -168,3 +171,4 @@ const showSnackbar = (textString) => {
 
 fileInput.addEventListener("change", loadImage);
 chooseImgBtn.addEventListener("click", () => fileInput.click());
+addImgSvg.addEventListener("click", () => fileInput.click());
