@@ -1,6 +1,6 @@
 const fileInput = document.querySelector(".file-input"),
 chooseImgBtn = document.querySelector(".choose-img"),
-addImgSvg = document.querySelector(".image-placeholder"),
+addImgSvg = document.querySelector("#temp-image"),
 imageContainer = document.querySelector(".image-container"),
 workingImage = document.getElementById("working-image"),
 overlay = document.querySelector(".overlay"),
@@ -128,6 +128,7 @@ const loadImage = () => {
     workingImage.addEventListener("load", () => {
         imageContainer.removeAttribute("hidden");
         updateWorkingImage();
+        imageContainer.style.height = overlay.style.height;
     });
 }
 
