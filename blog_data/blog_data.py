@@ -48,5 +48,14 @@ blog_posts: list[Blog] = [
         'Photo by <a href="https://unsplash.com/@lucabravo?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Luca Bravo</a> on <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>',
         ["Programming", "Python"],
         "setting-up-a-python-project.html"
+    ),
+    Blog(
+        "Image Editing App Using HTML, CSS, and Javascript",
+        "TODO",
+        "A small application that allows a user to add an image and crop that image.",
+        "bree-anne-rNFo69CnKK4-unsplash.jpg",
+        'Photo by <a href="https://unsplash.com/@breebuddy?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Bree Anne</a> on <a href="https://unsplash.com/photos/rNFo69CnKK4?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>',
+        ['HTML','CSS','Javascript'],
+        "image-editing-app.html"
     )
 ]
