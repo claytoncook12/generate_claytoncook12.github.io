@@ -27,6 +27,7 @@ class SiteGenerator(object):
         self.set_main_blog_posts()
         self.render_about_page()
         self.render_music_page()
+        self.render_favorites_page()
         self.collect_blog_post_tags()
         self.render_main_page()
         self.render_blog_posts()
@@ -115,6 +116,16 @@ class SiteGenerator(object):
             html = template.render(
                 css_style_sheets = self.css_style_sheets,
                 head_shot = self.head_shot,
+            )
+            file.write(html)
+    
+    def render_favorites_page(self) -> None:
+        """ Create Favorite Links Page """
+        print("Rendering Favorite Links page to static files")
+        template = self.env.get_template('_favorite_links.html')
+        with open('public/favorite_links.html', 'w+') as file:
+            html = template.render(
+                css_style_sheets = self.css_style_sheets
             )
             file.write(html)
 
