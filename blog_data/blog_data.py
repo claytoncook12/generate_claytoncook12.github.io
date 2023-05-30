@@ -2,6 +2,18 @@ from blog_data.model.blog import Blog
 
 blog_posts: list[Blog] = [
     Blog(
+        "Rescaling Video Files with FFmpeg to Maximizing an Older iPod",
+        "May 30, 2023",
+        """My daughter was give an older iPod touch fourth-generation with 6.4 Gb of storage. In an
+        effort to maximize the amount of videos that I could fit on the device I turned to using
+        FFmpeg to reduce the mp4 video files down to a resolution that was watchable on the iPod. I found
+        that I could get roughly 7.31 hrs of video per 1 GB.""",
+        "ross-parmly-rf6ywHVkrlY-unsplash.jpg",
+        'Photo by <a href="https://unsplash.com/@rparmly?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Ross Parmly</a> on <a href="https://unsplash.com/photos/rf6ywHVkrlY?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>',
+        ['FFmpeg'],
+        "maximizing-an-older-ipod.html"
+    ),
+    Blog(
         "Using Interfaces to Ensure Behavior",
         "Febuary 23, 2023",
         """Interfaces ensure that a class behaves in a certain way and expresses
