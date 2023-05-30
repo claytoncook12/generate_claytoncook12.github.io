@@ -1,16 +1,18 @@
 {% extends '_base.html' %}
 
 {% block css_styles %}
-  {% for css_style in css_style_sheets %}
-    <link rel="stylesheet" href="static/css/{{ css_style }}">
-  {% endfor %}
-  <style>
+{% for css_style in css_style_sheets %}
+<link rel="stylesheet" href="static/css/{{ css_style }}">
+{% endfor %}
+<style>
     .iframe-container {
         position: relative;
         overflow: hidden;
         width: 100%;
-        padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+        padding-top: 56.25%;
+        /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
     }
+
     .responsive-iframe {
         position: absolute;
         top: 0;
@@ -20,106 +22,84 @@
         width: 100%;
         height: 100%;
     }
-  </style>
+</style>
 {% endblock %}
 
 {% block content %}
 <!-- Card -->
 <div class="w3-row w3-margin w3-center">
-  <div class="w3-col l2 w3-transparent">
-    <!-- center spacer  for main content-->
-    <p></p>
-  </div>
-  <div 
-    class="w3-col w3-card-4 l8 s12 w3-white"
-  >
-    <div class="w3-container" style="padding-bottom: 15px;">
-    
-    <h2 class="w3-center">Music</h2>
+    <div class="w3-col l2 w3-transparent">
+        <!-- center spacer  for main content-->
+        <p></p>
+    </div>
+    <div class="w3-col w3-card-4 l8 s12 w3-white">
+        <div class="w3-container" style="padding-bottom: 15px;">
 
-    <p class="w3-left-align">
-    I love to play music.I will be adding the tunes that I can
-    play to this page to help with my learning and share what I know.
-    Additionally, see some thoughts
-    on my favorite musicians below.
-    </p>
+            <h2 class="w3-center">Music</h2>
 
-    <hr>
-    <h3>Favorite Flute Players</h3>
-    <p class="w3-left-align">
-        Below is a small list of my favorite irish flute players and a quick video clip.
-    </p>
-    <h5 class="w3-left-align">Matt Molloy</h5>
-    <div class="iframe-container">
-        <iframe
-            class="responsive-iframe"
-            src="https://www.youtube.com/embed/R2v1t6jS8zc">
-        </iframe>
+            <p class="w3-left-align">
+                I love to play music.I will be adding the tunes that I can
+                play to this page to help with my learning and share what I know.
+                Additionally, see some thoughts
+                on my favorite musicians below.
+            </p>
+
+            <hr>
+            <h3>Favorite Flute Players</h3>
+            <p class="w3-left-align">
+                Below is a small list of my favorite irish flute players and a quick video clip.
+            </p>
+            <h5 class="w3-left-align">Matt Molloy</h5>
+            <div class="iframe-container">
+                <iframe class="responsive-iframe" src="https://www.youtube.com/embed/R2v1t6jS8zc">
+                </iframe>
+            </div>
+            <h5 class="w3-left-align">Conal O'Grada</h5>
+            <div class="iframe-container">
+                <iframe class="responsive-iframe" src="https://www.youtube.com/embed/tSpaYzZ-Wi8">
+                </iframe>
+            </div>
+            <h5 class="w3-left-align">Seamus Tansey</h5>
+            <div class="iframe-container">
+                <iframe class="responsive-iframe" src="https://www.youtube.com/embed/OTo5Ae7Vz3c">
+                </iframe>
+            </div>
+            <h5 class="w3-left-align">John Skelton</h5>
+            <div class="iframe-container">
+                <iframe class="responsive-iframe" src="https://www.youtube.com/embed/po_p3STmeBc">
+                </iframe>
+            </div>
+            <h5 class="w3-left-align">Shannon Heaton</h5>
+            <div class="iframe-container">
+                <iframe class="responsive-iframe" src="https://www.youtube.com/embed/mrJ7p-dDowM">
+                </iframe>
+            </div>
+            <h5 class="w3-left-align">Catherine McEvoy</h5>
+            <div class="iframe-container">
+                <iframe class="responsive-iframe" src="https://www.youtube.com/embed/yjbCPGkw3pw">
+                </iframe>
+            </div>
+            <h5 class="w3-left-align">Harry Bradley</h5>
+            <div class="iframe-container">
+                <iframe class="responsive-iframe" src="https://www.youtube.com/embed/3TGLTn2WZCw">
+                </iframe>
+            </div>
+            <h5 class="w3-left-align">Colm Guilfoyle</h5>
+            <div class="iframe-container">
+                <iframe class="responsive-iframe" src="https://www.youtube.com/embed/sLvq4T2WeLM">
+                </iframe>
+            </div>
+            <h5 class="w3-left-align">Steffen Gabriel</h5>
+            <div class="iframe-container">
+                <iframe class="responsive-iframe" src="https://www.youtube.com/embed/Dtnt4O74PME">
+                </iframe>
+            </div>
+            <h5 class="w3-left-align">Hatao</h5>
+            <div class="iframe-container">
+                <iframe class="responsive-iframe" src="https://www.youtube.com/embed/GoevLwodZws?t=195">
+                </iframe>
+            </div>
+        </div>
     </div>
-    <h5 class="w3-left-align">Conal O'Grada</h5>
-    <div class="iframe-container">
-        <iframe
-            class="responsive-iframe"
-            src="https://www.youtube.com/embed/tSpaYzZ-Wi8">
-        </iframe>
-    </div>
-    <h5 class="w3-left-align">Seamus Tansey</h5>
-    <div class="iframe-container">
-        <iframe
-            class="responsive-iframe"
-            src="https://www.youtube.com/embed/OTo5Ae7Vz3c">
-        </iframe>
-    </div>
-    <h5 class="w3-left-align">John Skelton</h5>
-    <div class="iframe-container">
-        <iframe
-            class="responsive-iframe"
-            src="https://www.youtube.com/embed/po_p3STmeBc">
-        </iframe>
-    </div>
-    <h5 class="w3-left-align">Shannon Heaton</h5>
-    <div class="iframe-container">
-        <iframe
-            class="responsive-iframe"
-            src="https://www.youtube.com/embed/mrJ7p-dDowM">
-        </iframe>
-    </div>
-    <h5 class="w3-left-align">Catherine McEvoy</h5>
-    <div class="iframe-container">
-        <iframe
-            class="responsive-iframe"
-            src="https://www.youtube.com/embed/yjbCPGkw3pw">
-        </iframe>
-    </div>
-    <h5 class="w3-left-align">Harry Bradley</h5>
-    <div class="iframe-container">
-        <iframe
-            class="responsive-iframe"
-            src="https://www.youtube.com/embed/3TGLTn2WZCw">
-        </iframe>
-    </div>
-    <h5 class="w3-left-align">Colm Guilfoyle</h5>
-    <div class="iframe-container">
-        <iframe
-            class="responsive-iframe"
-            src="https://www.youtube.com/embed/sLvq4T2WeLM">
-        </iframe>
-    </div>
-    <h5 class="w3-left-align">Steffen Gabriel</h5>
-    <div class="iframe-container">
-        <iframe
-            class="responsive-iframe"
-            src="https://www.youtube.com/embed/Dtnt4O74PME">
-        </iframe>
-    </div>
-    <h5 class="w3-left-align">Hatao</h5>
-    <div class="iframe-container">
-        <iframe
-            class="responsive-iframe"
-            src="https://www.youtube.com/embed/GoevLwodZws?t=195">
-        </iframe>
-    </div>
-    </div>
-  </div>
 </div>
 {% endblock %}
