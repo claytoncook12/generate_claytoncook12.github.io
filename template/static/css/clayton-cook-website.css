@@ -2,3 +2,11 @@
     width: 80%;
     overflow: auto;
 }
+
+a:hover {
+    color: #4BAE50;
+}
+
+.w3-tag {
+    cursor: pointer;
+}
