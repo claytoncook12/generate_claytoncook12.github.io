@@ -1,11 +1,80 @@
+<p>
+    I'm currently reading through <i>The Pragmatic Programmer</i> (<i>PP</i>) by David Thomas and
+    Andrew Hunt. In Chapter 5 "Bend, or Break" the <b>Observer Pattern</b> was discussed
+    and how it related to RxJS and Reactive Programming. I currently use Angular as
+    the main front end framework at work and the concepts of the Observer Pattern and
+    Reactive programming are extremely important for having a mental framework of how
+    to use Angular effectively. This blog post will dig is a discussion of
+    the Observer pattern, how it related to RxJS, and give some coding examples.
+</p>
+
 <h2>What is the Observer Pattern</h2>
+
+<div class="w3-panel w3-leftbar w3-light-grey">
+    <p class="w3-xlarge w3-serif">
+        <i>"In the observer pattern we have a source of
+            events, called the <b>observable</b> and a list of clients,
+            the <b>observers</b>, who are interested in
+            those events."</i>
+    </p>
+    <p>The Pragmatic Programmer</p>
+</div>
+
+<p>
+    So the main flow is such:
+<ol>
+    <li>An observable maintains a list of callback functions</li>
+    <li>Clients then register their callback functions to be put on the observable's list</li>
+    <li>
+        When an event occurs the observable iterates through
+        the list and executes those callback functions.
+    </li>
+</ol>
+</p>
+
 <h2>Creating An Observer in Javascript</h2>
+
+<p>
+    I'm going to create an Observer in JavaScript to clarify how this works.
+</p>
+
 <h3>Draw Backs To The Observer Method</h3>
 <h2>Next Steps With Publish/Subscribe</h2>
+<h3>RxJS Observable - The Observer Pattern Standardized</h3>
+
+<p>
+    RxJS has Standardized the Observer Pattern with its <code class="w3-codespan">Observer</code>
+    object. The <code class="w3-codespan">Observer</code> object is the basic building block
+    within RxJS and is an object that can emit values at any time and provides
+    a means to update subscribers of those updates.
+</p>
+
 <h2>Reactive Programming with Vanilla RxJS and Webpack</h2>
+
+<p>
+    <b>Temp Notes for section</b><br>
+    <i>"In particular, an observable can be piped through an operator, which could change either the values emitted, the timing/number of emitted events, or both."</i>
+</p>
+
+<p>
+    <b>Temp Example with Vanilla JavaScript no Webpack</b>
+    <figcaption class="w3-center">
+        Importing RxJS in Vanilla JavaScript File
+    </figcaption>
+    <pre class="line-numbers"><code class="language-html">&#60;script src="https://unpkg.com/rxjs@7.8.1/dist/bundles/rxjs.umd.min.js"&#62;&#60;/script&#62;
+
+const {Observable, from } = rxjs;
+    </code></pre>
+</p>
 
 <h2>References</h2>
 <ul>
+    <li>
+        <a href="https://pragprog.com/titles/tpp20/the-pragmatic-programmer-20th-anniversary-edition/" target="_blank">
+            The Pragmatic Programmer, 20th Anniversary Edition
+        </a>
+        by David Thomas and Andrew Hunt
+    </li>
     <li>
         <a href="https://www.youtube.com/watch?v=TRMs5bHy66E" target="_blank">
             Vanilla JavaScript RxJS Setup With WebPack
@@ -17,5 +86,11 @@
             RxJS Primer
         </a>
         - Great Place To Start With RxJS
+    </li>
+    <li>
+        <a href="https://www.toptal.com/react/rxjs-react-state-management" target="_blank">
+            Reusable State Management With RxJS, React, and Custom Libraries
+        </a>
+        - Good Blog Post for discussion of How RxJS works and the observable in RxJS.
     </li>
 </ul>
