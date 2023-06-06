@@ -4,7 +4,7 @@
     and how it related to RxJS and Reactive Programming. I currently use Angular as
     the main front end framework at work and the concepts of the Observer Pattern and
     Reactive programming are extremely important for having a mental framework of how
-    to use Angular effectively. This blog post will dig is a discussion of
+    to use Angular effectively. This blog post will discussion
     the Observer pattern, how it related to RxJS, and give some coding examples.
 </p>
 
@@ -32,14 +32,58 @@
 </ol>
 </p>
 
-<h2>Creating An Observer in Javascript</h2>
+<h2>Creating An Observable in Javascript</h2>
 
 <p>
-    I'm going to create an Observer in JavaScript to clarify how this works.
+    I'm going to create an Observable <b>NEED TO FIX NAME IN CODE EXAMPLE</b> in JavaScript to clarify how this works.
 </p>
 
-<h3>Draw Backs To The Observer Method</h3>
-<h2>Next Steps With Publish/Subscribe</h2>
+<p>
+    <figcaption class="w3-center">
+        The Observer Pattern in Vanilla Javascript
+    </figcaption>
+    <pre><code class="language-js">class Observer {
+    // Function Reference List
+    constructor() {
+        this.functionArray = []
+    }
+
+    // Function to Call Callback in Function Array
+    register(callback) {
+        this.functionArray.push(callback)
+    }
+
+    // Some Event That Happens
+    event1(number) {
+        // Loop through All Callback When Event Happens
+        for (var i = 0; i < this.functionArray.length; i++) {
+            this.functionArray[i](number);
+        }
+    }
+}
+
+function callback1(number) {
+    console.log(`Callback1: value ${number}`)
+}
+
+function callback2(number) {
+    console.log(`Callback2: value ${number}`)
+}
+
+const Observer1 = new Observer();
+Observer1.register(callback1);
+Observer1.register(callback2);
+Observer1.event1(99);</code></pre>
+
+<figcaption class="w3-center">
+    Process Output
+</figcaption>
+<pre><code class="language-powershell"></code>C:\node observer.js
+Callback1: value 99
+Callback2: value 99</pre>
+</p>
+
+<h3>Draw Backs To The Observer Method and Next Steps (Publish/Subscribe)</h3>
 <h3>RxJS Observable - The Observer Pattern Standardized</h3>
 
 <p>
