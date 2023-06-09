@@ -35,27 +35,27 @@
 <h2>Creating An Observable in Javascript</h2>
 
 <p>
-    I'm going to create an Observable <b>NEED TO FIX NAME IN CODE EXAMPLE</b> in JavaScript to clarify how this works.
+    I'm going to create an Observable in JavaScript to clarify how this works.
 </p>
 
 <p>
     <figcaption class="w3-center">
         The Observer Pattern in Vanilla Javascript
     </figcaption>
-    <pre><code class="language-js">class Observer {
-    // Function Reference List
+    <pre><code class="language-js">class Observable {
+    // Callback List
     constructor() {
         this.functionArray = []
     }
 
-    // Function to Call Callback in Function Array
+    // Add Callback to Callback List
     register(callback) {
         this.functionArray.push(callback)
     }
 
-    // Some Event That Happens
+    // Some Event Happens
     event1(number) {
-        // Loop through All Callback When Event Happens
+        // Loop through All Callbacks
         for (var i = 0; i < this.functionArray.length; i++) {
             this.functionArray[i](number);
         }
@@ -70,7 +70,7 @@ function callback2(number) {
     console.log(`Callback2: value ${number}`)
 }
 
-const Observer1 = new Observer();
+const Observer1 = new Observable();
 Observer1.register(callback1);
 Observer1.register(callback2);
 Observer1.event1(99);</code></pre>
@@ -83,8 +83,37 @@ Callback1: value 99
 Callback2: value 99</pre>
 </p>
 
-<h3>Draw Backs To The Observer Method and Next Steps (Publish/Subscribe)</h3>
-<h3>RxJS Observable - The Observer Pattern Standardized</h3>
+<p>
+    So in this code example the <code class="w3-codespan">Observable</code> maintains a list of callback functions
+    that are then called when <code class="w3-codespan">event1</code> is triggered. This pattern is especially
+    useful when we want multiple actions to occur when a User interaction happens. The Observer pattern allows
+    for a clear chaining of multiple actions to an initiating event.
+</p>
+
+<p>
+    As is mentioned in PP, the Observer pattern has baked in coupling since the callbacks are handled inline
+    by the observable and if the registered callbacks initiate synchronously then this can cause
+    a code bottleneck. To address these issues we can pull the code related to connecting the Observer and
+    Client into channels that are maintained separately. This moves our Observer pattern into a more
+    generalized form called <b>Publish/Subscribe (Pubsub)</b>. This address decoupling and introduces the 
+    possibility for asynchronous processing of callbacks. So with <b>Pubsub</b> we have publishers, subscribers,
+    and channels that connect the two.  
+</p>
+
+<p>
+    One of the most popular coding libraries that implement this PubSub Observer Pattern is RxJS.
+</p>
+
+<div class="w3-display-container w3-center">
+    <img 
+    src="../static/images/programming_images/rxjs.svg"
+    alt="rxjs logo"
+    class="w3-center"
+    style="width:100%;max-width:200px"
+>
+</div>
+
+<h2>RxJS Observable - The Observer Pattern Standardized</h2>
 
 <p>
     RxJS has Standardized the Observer Pattern with its <code class="w3-codespan">Observer</code>
@@ -93,7 +122,28 @@ Callback2: value 99</pre>
     a means to update subscribers of those updates.
 </p>
 
-<h2>Reactive Programming with Vanilla RxJS and Webpack</h2>
+<h3>RxJS and Vanilla Javascript</h3>
+
+<p class="w3-yellow">
+    Do I include Reactive Programming in this section since I've only been
+    talking about the Observer Pattern?
+</p>
+
+<p>
+    We will create the previous code example with <code class="ws-codespan">RxJS</code> version 7.8.1 and import
+    that into our JavaScript file like so.  
+</p>
+
+<p>
+    <b>Temp Example with Vanilla JavaScript no Webpack</b>
+    <figcaption class="w3-center">
+        Importing RxJS in Vanilla JavaScript File
+    </figcaption>
+    <pre class="line-numbers"><code class="language-html">&#60;script src="https://unpkg.com/rxjs@7.8.1/dist/bundles/rxjs.umd.min.js"&#62;&#60;/script&#62;
+
+const {Observable, from } = rxjs;
+    </code></pre>
+</p>
 
 <p>
     <b>Temp Notes for section</b><br>
