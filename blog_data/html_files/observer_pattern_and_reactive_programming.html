@@ -1,0 +1,214 @@
+<p>
+    I'm currently reading through <i>The Pragmatic Programmer</i> (<i>PP</i>) by David Thomas and
+    Andrew Hunt. In Chapter 5 "Bend, or Break" the <b>Observer Pattern</b> was discussed
+    and how it related to RxJS and Reactive Programming. I currently use Angular as
+    the main front end framework at work and the concepts of the Observer Pattern and
+    Reactive programming are extremely important for having a mental framework of how
+    to use Angular effectively. This blog post will discussion
+    the Observer pattern, how it related to RxJS, and give some coding examples.
+</p>
+
+<h2>What is the Observer Pattern</h2>
+
+<div class="w3-panel w3-leftbar w3-light-grey">
+    <p class="w3-xlarge w3-serif">
+        <i>"In the observer pattern we have a source of
+            events, called the <b>observable</b> and a list of clients,
+            the <b>observers</b>, who are interested in
+            those events."</i>
+    </p>
+    <p>The Pragmatic Programmer</p>
+</div>
+
+<p>
+    So the main flow is such:
+<ol>
+    <li>An observable maintains a list of callback functions</li>
+    <li>Clients then register their callback functions to be put on the observable's list</li>
+    <li>
+        When an event occurs the observable iterates through
+        the list and executes those callback functions.
+    </li>
+</ol>
+</p>
+
+<h2>Creating An Observable in Javascript</h2>
+
+<p>
+    I'm going to create an Observable in JavaScript to clarify how this works.
+</p>
+
+<p>
+    <figcaption class="w3-center">
+        The Observer Pattern in Vanilla Javascript
+    </figcaption>
+    <pre><code class="language-js">class Observable {
+    // Callback List
+    constructor() {
+        this.functionArray = []
+    }
+
+    // Add Callback to Callback List
+    register(callback) {
+        this.functionArray.push(callback)
+    }
+
+    // Some Event Happens
+    event1(number) {
+        // Loop through All Callbacks
+        for (var i = 0; i < this.functionArray.length; i++) {
+            this.functionArray[i](number);
+        }
+    }
+}
+
+function callback1(number) {
+    console.log(`Callback1: value ${number}`)
+}
+
+function callback2(number) {
+    console.log(`Callback2: value ${number}`)
+}
+
+const Observer1 = new Observable();
+Observer1.register(callback1);
+Observer1.register(callback2);
+Observer1.event1(99);</code></pre>
+
+<figcaption class="w3-center">
+    Process Output
+</figcaption>
+<pre><code class="language-powershell"></code>C:\node observer.js
+Callback1: value 99
+Callback2: value 99</pre>
+</p>
+
+<p>
+    So in this code example the <code class="w3-codespan">Observable</code> maintains a list of callback functions
+    that are then called when <code class="w3-codespan">event1</code> is triggered. This pattern is especially
+    useful when we want multiple actions to occur when a User interaction happens. The Observer pattern allows
+    for a clear chaining of multiple actions to an initiating event.
+</p>
+
+<p>
+    As is mentioned in PP, the Observer pattern has baked in coupling since the callbacks are handled inline
+    by the observable and if the registered callbacks initiate synchronously then this can cause
+    a code bottleneck. To address these issues we can pull the code related to connecting the Observer and
+    Client into channels that are maintained separately. This moves our Observer pattern into a more
+    generalized form called <b>Publish/Subscribe (Pubsub)</b>. This address decoupling and introduces the 
+    possibility for asynchronous processing of callbacks. So with <b>Pubsub</b> we have publishers, subscribers,
+    and channels that connect the two.  
+</p>
+
+<p>
+    One of the most popular coding libraries that implement this PubSub Observer Pattern is RxJS.
+</p>
+
+<div class="w3-display-container w3-center">
+    <img 
+    src="../static/images/programming_images/rxjs.svg"
+    alt="rxjs logo"
+    class="w3-center slow-rotate"
+    style="width:100%;max-width:200px;"
+>
+</div>
+
+<h2>RxJS Observable - The Observer Pattern Standardized</h2>
+
+<p>
+    RxJS has Standardized the Observer Pattern with its <code class="w3-codespan">Observer</code>
+    object. The <code class="w3-codespan">Observer</code> object is the basic building block
+    within RxJS and is an object that can emit values at any time and provides
+    a means to update subscribers of those updates.
+</p>
+
+<h3>RxJS and Vanilla Javascript</h3>
+
+<p>
+    This section will include an example vanilla javascript application that uses <code class="ws-codespan">RxJS</code>
+    that retrieves user information when a button is clicked from an api endpoint.
+    I will be using <code class="ws-codespan">RxJS</code> version 7.8.1 and import
+    that into the HTML file with a script import.  
+</p>
+
+<p>
+    <b>Temp Example with Vanilla JavaScript no Webpack</b>
+    <figcaption class="w3-center">
+        Importing RxJS in Vanilla JavaScript File
+    </figcaption>
+    <pre><code class="language-html">&#60;script src="https://unpkg.com/rxjs@7.8.1/dist/bundles/rxjs.umd.min.js"&#62;&#60;/script&#62;</code></pre>
+</p>
+
+<h2>Observable Example</h2>
+
+<p>
+    In the example we use an <code class="w3-codespan">Ajax</code> <code class="ws-codespan">RxJS</code> object. This object
+    is an Observable that we can subscribe to its events. Within the javascript file for the
+    page this is what that function looks like.
+
+    <figcaption class="w3-center">
+        Ajax (Observable) In RxJS
+    </figcaption>
+<pre><code class="language-js">function makeRequest() {
+    rxjs.ajax.ajax.getJSON(`https://reqres.in/api/users/${userID.value}`)
+    .subscribe({
+        next: (response) => {
+            addDataElement(
+                response.data.id,
+                response.data.email,
+                `${response.data.first_name} ${response.data.last_name}`,
+                response.data.avatar
+            )
+        },
+        error: (error) => window.alert('Users Lookup Failed'),
+        complete: () => console.log("Complete!"),
+    });
+}</code></pre>
+</p>
+
+<p>
+    We use the <code class="w3-codespan">getJSON</code> property on the <code class="w3-codespan">Ajax</code> object to
+    make a api request to <a href="reqres.in">Reqres</a>. We then subscribe to the <code class="w3-codespan">Ajax</code>
+    observable so that when the response gets completed we can do something with the data when it is returned. The subscribe
+    method has three callbacks that run if the observable returns data, errors out or is run after it completes. The next,
+    error, and complete callbacks.
+</p>
+
+<h2>Final Code Example</h2>
+
+<p>
+    Click the final example button to go to the working example page. Use the developer console if
+    you would like to inspect the complete project example code.
+</p>
+
+<p class="w3-center">
+    <div
+        onclick="window.location='../html_projects/rxjs-obervable-example/rxjs_observable_example.html'"
+        class="w3-green w3-hover-shadow w3-center grow"
+        style="font-size: 30px; cursor: pointer; max-width: 400px; margin: 0 auto; border-radius: 50px; padding: 5px;"
+    >
+        Final Example
+    </div>
+</p>
+
+<h2>References</h2>
+<ul>
+    <li>
+        <a href="https://pragprog.com/titles/tpp20/the-pragmatic-programmer-20th-anniversary-edition/" target="_blank">
+            The Pragmatic Programmer, 20th Anniversary Edition
+        </a>
+        by David Thomas and Andrew Hunt
+    </li>
+    <li>
+        <a href="https://www.learnrxjs.io/learn-rxjs/concepts/rxjs-primer" target="_blank">
+            RxJS Primer
+        </a>
+        - Great Place To Start With RxJS
+    </li>
+    <li>
+        <a href="https://www.toptal.com/react/rxjs-react-state-management" target="_blank">
+            Reusable State Management With RxJS, React, and Custom Libraries
+        </a>
+        - Good Blog Post for discussion of How RxJS works and the observable in RxJS.
+    </li>
+</ul>

@@ -2,6 +2,18 @@ from blog_data.model.blog import Blog
 
 blog_posts: list[Blog] = [
     Blog(
+        "The Observer Pattern and Reactive Programming",
+        "June 22, 2023",
+        """In order to better under stand the observer pattern and reactive programming
+        I wanted to write a observer in javascript and explorer some common features in
+        vanilla RxJS project with WebPack.
+        """,
+        "good-free-photos-LADl0hVNBCQ-unsplash.jpg",
+        'Photo by <a href="https://unsplash.com/@goodfreephoto_com?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Good Free Photos</a> on <a href="https://unsplash.com/photos/LADl0hVNBCQ?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>',
+        ['Observer Pattern','Reactive Programming','JavaScript'],
+        "observer_pattern_and_reactive_programming.html"
+    ),
+    Blog(
         "Rescaling Video Files with FFmpeg to Maximizing an Older iPod",
         "May 30, 2023",
         """My daughter was give an older iPod touch fourth-generation with 6.4 Gb of storage. In an
