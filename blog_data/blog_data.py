@@ -3,7 +3,7 @@ from blog_data.model.blog import Blog
 blog_posts: list[Blog] = [
     Blog(
         "The Observer Pattern and Reactive Programming",
-        "TODO",
+        "June 22, 2023",
         """In order to better under stand the observer pattern and reactive programming
         I wanted to write a observer in javascript and explorer some common features in
         vanilla RxJS project with WebPack.

@@ -124,30 +124,11 @@ Callback2: value 99</pre>
 
 <h3>RxJS and Vanilla Javascript</h3>
 
-<p class="w3-yellow">
-    Do I include Reactive Programming in this section since I've only been
-    talking about the Observer Pattern?
-</p>
-
 <p>
-    We will create the previous code example with <code class="ws-codespan">RxJS</code> version 7.8.1 and import
-    that into our JavaScript file like so.  
-</p>
-
-<p>
-    <b>Temp Example with Vanilla JavaScript no Webpack</b>
-    <figcaption class="w3-center">
-        Importing RxJS in Vanilla JavaScript File
-    </figcaption>
-    <pre class="line-numbers"><code class="language-html">&#60;script src="https://unpkg.com/rxjs@7.8.1/dist/bundles/rxjs.umd.min.js"&#62;&#60;/script&#62;
-
-const {Observable, from } = rxjs;
-    </code></pre>
-</p>
-
-<p>
-    <b>Temp Notes for section</b><br>
-    <i>"In particular, an observable can be piped through an operator, which could change either the values emitted, the timing/number of emitted events, or both."</i>
+    This section will include an example vanilla javascript application that uses <code class="ws-codespan">RxJS</code>
+    that retrieves user information when a button is clicked from an api endpoint.
+    I will be using <code class="ws-codespan">RxJS</code> version 7.8.1 and import
+    that into the HTML file with a script import.  
 </p>
 
 <p>
@@ -155,13 +136,50 @@ const {Observable, from } = rxjs;
     <figcaption class="w3-center">
         Importing RxJS in Vanilla JavaScript File
     </figcaption>
-    <pre class="line-numbers"><code class="language-html">&#60;script src="https://unpkg.com/rxjs@7.8.1/dist/bundles/rxjs.umd.min.js"&#62;&#60;/script&#62;
-
-const {Observable, from } = rxjs;
-    </code></pre>
+    <pre><code class="language-html">&#60;script src="https://unpkg.com/rxjs@7.8.1/dist/bundles/rxjs.umd.min.js"&#62;&#60;/script&#62;</code></pre>
 </p>
 
 <h2>Observable Example</h2>
+
+<p>
+    In the example we use an <code class="w3-codespan">Ajax</code> <code class="ws-codespan">RxJS</code> object. This object
+    is an Observable that we can subscribe to its events. Within the javascript file for the
+    page this is what that function looks like.
+
+    <figcaption class="w3-center">
+        Ajax (Observable) In RxJS
+    </figcaption>
+<pre><code class="language-js">function makeRequest() {
+    rxjs.ajax.ajax.getJSON(`https://reqres.in/api/users/${userID.value}`)
+    .subscribe({
+        next: (response) => {
+            addDataElement(
+                response.data.id,
+                response.data.email,
+                `${response.data.first_name} ${response.data.last_name}`,
+                response.data.avatar
+            )
+        },
+        error: (error) => window.alert('Users Lookup Failed'),
+        complete: () => console.log("Complete!"),
+    });
+}</code></pre>
+</p>
+
+<p>
+    We use the <code class="w3-codespan">getJSON</code> property on the <code class="w3-codespan">Ajax</code> object to
+    make a api request to <a href="reqres.in">Reqres</a>. We then subscribe to the <code class="w3-codespan">Ajax</code>
+    observable so that when the response gets completed we can do something with the data when it is returned. The subscribe
+    method has three callbacks that run if the observable returns data, errors out or is run after it completes. The next,
+    error, and complete callbacks.
+</p>
+
+<h2>Final Code Example</h2>
+
+<p>
+    Click the final example button to go to the working example page. Use the developer console if
+    you would like to inspect the complete project example code.
+</p>
 
 <p class="w3-center">
     <div
@@ -180,12 +198,6 @@ const {Observable, from } = rxjs;
             The Pragmatic Programmer, 20th Anniversary Edition
         </a>
         by David Thomas and Andrew Hunt
-    </li>
-    <li>
-        <a href="https://www.youtube.com/watch?v=TRMs5bHy66E" target="_blank">
-            Vanilla JavaScript RxJS Setup With WebPack
-        </a>
-        by Huy Nguyen USA
     </li>
     <li>
         <a href="https://www.learnrxjs.io/learn-rxjs/concepts/rxjs-primer" target="_blank">
