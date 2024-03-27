@@ -2,6 +2,18 @@ from blog_data.model.blog import Blog
 
 blog_posts: list[Blog] = [
     Blog(
+        "Traditional Irish Melodies Workshop March 24th, 2024 Resources",
+        "March 27, 2024",
+        """Jannell Canerday and John Walsh conducted a Traditional Irish Melodies workshop
+        at the Louisville Folk School. Talked about the banjo in irish music, fathers of the
+        irish banjo and taught some irish tunes. Within the blog post are some reference audio
+        files as well.""",
+        "ira-selendripity-qUpzRaylopM-unsplash.jpg",
+        'Photo by <a href="https://unsplash.com/@selendripity?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Ira Selendripity</a> on <a href="https://unsplash.com/photos/brown-string-instrument-qUpzRaylopM?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>',
+        ['Irish Music','Fiddle','Banjo'],
+        "Traditional_Irish_Melodies_Workshop_March_24th_2024_Resources.html"
+    ),
+    Blog(
         "The Observer Pattern and Reactive Programming",
         "June 22, 2023",
         """In order to better under stand the observer pattern and reactive programming
