@@ -4,8 +4,8 @@ blog_posts: list[Blog] = [
     Blog(
         "Traditional Irish Melodies Workshop March 24th, 2024 Resources",
         "March 27, 2024",
-        """Jannell Canerday and John Walsh conducted a Traditional Irish Melodies workshop
-        at the Louisville Folk School. Talked about the banjo in irish music, fathers of the
+        """Traditional Irish Melodies workshop at the Louisville Folk School.
+        Talked about the banjo in irish music, fathers of the
         irish banjo and taught some irish tunes. Within the blog post are some reference audio
         files as well.""",
         "ira-selendripity-qUpzRaylopM-unsplash.jpg",
