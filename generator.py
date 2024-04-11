@@ -14,10 +14,10 @@ class SiteGenerator(object):
         )
 
         self.css_style_sheets: list[str] = ["w3.css"]
-        self.head_shot: str = "csc_headshot.svg"
+        self.head_shot: str = "csc_headshot_2.jpg"
         self.blog_posts: list[Blog] = blog_posts
         self.main_blog_posts: list[str] = []
-        self.tags: dict = dict()
+        self.tags: dict[str, str] = dict()
 
         # Actions To Generate Site
         self.empty_public()
