@@ -28,6 +28,7 @@ class SiteGenerator(object):
         self.render_about_page()
         self.render_music_page()
         self.render_favorites_page()
+        self.render_cadd_page()
         self.collect_blog_post_tags()
         self.render_main_page()
         self.render_blog_posts()
@@ -124,6 +125,16 @@ class SiteGenerator(object):
         print("Rendering Favorite Links page to static files")
         template = self.env.get_template('_favorite_links.html')
         with open('public/favorite_links.html', 'w+') as file:
+            html = template.render(
+                css_style_sheets = self.css_style_sheets
+            )
+            file.write(html)
+    
+    def render_cadd_page(self) -> None:
+        """ Create Autocadd and Carlson Learning Page """
+        print("Rendering Autocadd and Carlson Learning Page page to static files")
+        template = self.env.get_template('_cadd.html')
+        with open('public/cadd.html', 'w+') as file:
             html = template.render(
                 css_style_sheets = self.css_style_sheets
             )

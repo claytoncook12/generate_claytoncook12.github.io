@@ -1,0 +1,72 @@
+{% extends '_base.html' %}
+
+{% block css_styles %}
+{% for css_style in css_style_sheets %}
+<link rel="stylesheet" href="static/css/{{ css_style }}">
+{% endfor %}
+{% endblock %}
+
+{% block content %}
+<!-- Card -->
+<div class="w3-row w3-margin w3-center">
+    <div class="w3-col l2 w3-transparent">
+        <!-- center spacer  for main content-->
+        <p></p>
+    </div>
+    <div class="w3-col w3-card-4 l8 s12 w3-white">
+        <div class="w3-container" style="padding-bottom: 15px;">
+            <h2 class="w3-center">
+                Page for Notes on AutoCAD and Carlson Products
+            </h2>
+
+            <p class="w3-center-align">
+                This is just a list of notes on AutoCadd and Carlson Products I use.
+            </p>
+
+            <h3 class="w3-left-align" onclick="w3HideById('List1')" style="cursor: pointer;">
+                AutoCAD <i class="fa fa-caret-down fa-xs"></i>
+            </h3>
+            <ul class="w3-left-align" id="List1">
+                <li>
+                    <a href="https://help.autodesk.com/view/MAP/2024/ENU/index.html?guid=GUID-FCA4705F-7CAF-4112-A647-904233D3DCC5" target="_blank">
+                        AutoCAD Map 3D 2024 Getting Started
+                    </a>
+                    - Good Place To Get Started on AutoCAD Map 3D
+                </li>
+            </ul>
+
+            <h3 class="w3-left-align" onclick="w3HideById('List2')" style="cursor: pointer;">
+                Carlson <i class="fa fa-caret-down  fa-xs"></i>
+            </h3>
+            <ul class="w3-left-align" id="List2">
+                <li>
+                    <a href="https://carlsonsw.com/webinars" target="_blank">
+                        Carlson Software's Training Webinars
+                    </a>
+                    - Recorded Webinars on Carlson Software
+                </li>
+            </ul>
+
+            <div class="w3-row w3-left-align">
+                <p><button class="w3-button w3-padding-large w3-white w3-border" type="button"
+                        onclick="location.href='{{index_ref}}index.html'">
+                        <b>Back to Home</b>
+                    </button></p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block js_files %}
+<script>
+    function w3HideById(id) {
+      var x = document.getElementById(id);
+      if (x.className.indexOf("w3-hide") == -1) {
+        x.className += " w3-hide";
+      } else {
+        x.className = x.className.replace(" w3-hide", "");
+      }
+    }
+</script>
+{% endblock %}
