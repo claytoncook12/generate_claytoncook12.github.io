@@ -133,8 +133,8 @@ class SiteGenerator(object):
     def render_cadd_page(self) -> None:
         """ Create Autocadd and Carlson Learning Page """
         print("Rendering Autocadd and Carlson Learning Page page to static files")
-        template = self.env.get_template('_cadd.html')
-        with open('public/cadd.html', 'w+') as file:
+        template = self.env.get_template('_cad.html')
+        with open('public/cad.html', 'w+') as file:
             html = template.render(
                 css_style_sheets = self.css_style_sheets
             )
