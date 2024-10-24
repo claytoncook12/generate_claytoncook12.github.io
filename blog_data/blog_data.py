@@ -4,8 +4,8 @@ blog_posts: list[Blog] = [
     Blog(
         "Creating A Staking Plan with AutoCad And Carlson Civil 2024",
         "October 24, 2024",
-        """A video covering taking a design file with line work and creating a staking plan
-        that can be used for staking in the field.""",
+        """In this recording, I go through the process of creating a staking plan using AutoCAD 2024 with the Carlson Civil suite
+        for staking in the field.""",
         "Hinkston-Boat-Ramp.jpg",
         '',
         ['Civil','AutoCad','Carlson','Staking'],
