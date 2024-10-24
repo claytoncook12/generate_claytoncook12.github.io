@@ -2,6 +2,16 @@ from blog_data.model.blog import Blog
 
 blog_posts: list[Blog] = [
     Blog(
+        "Creating A Staking Plan with AutoCad And Carlson Civil 2024",
+        "October 24, 2024",
+        """A video covering taking a design file with line work and creating a staking plan
+        that can be used for staking in the field.""",
+        "Hinkston-Boat-Ramp.jpg",
+        '',
+        ['Civil','AutoCad','Carlson','Staking'],
+        "Staking_Plan_Creation.html"
+    ),
+    Blog(
         "Traditional Irish Melodies Workshop March 24th, 2024 Resources",
         "March 27, 2024",
         """Traditional Irish Melodies workshop at the Louisville Folk School.
