@@ -2,6 +2,16 @@ from blog_data.model.blog import Blog
 
 blog_posts: list[Blog] = [
     Blog(
+        "Creating An Aerial Image From A Drone Flight for Civil Drawings",
+        "October 25, 2024",
+        """In this recording, I go through the process of creating an aerial image using DroneLink, WebODM Lightning,
+        AutoCAD 2024 with the Carlson Civil suite for civil engineering drawings.""",
+        "dam_5_ramp_image.jpg",
+        '',
+        ['Civil','AutoCad','Carlson','Drone'],
+        "Drone_Aerial_Image_Creation.html"
+    ),
+    Blog(
         "Creating A Staking Plan with AutoCad And Carlson Civil 2024",
         "October 24, 2024",
         """In this recording, I go through the process of creating a staking plan using AutoCAD 2024 with the Carlson Civil suite
