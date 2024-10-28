@@ -2,6 +2,16 @@ from blog_data.model.blog import Blog
 
 blog_posts: list[Blog] = [
     Blog(
+        "Civil Plan Creation for Boat Ramp Extension",
+        "October 29, 2024",
+        """In this recording, I go through the process of creating a civil engineering plan set for a 
+        boat ramp extension in kentucky.""",
+        "alexander_ramp_green_river.jpg",
+        '',
+        ['Civil','AutoCad','Carlson','Plans'],
+        "Civil_Plan_Creation_Boat_Ramp_1.html"
+    ),
+    Blog(
         "Creating An Aerial Image From A Drone Flight for Civil Drawings",
         "October 25, 2024",
         """In this recording, I go through the process of creating an aerial image using DroneLink, WebODM Lightning,
