@@ -2,14 +2,15 @@ from blog_data.model.blog import Blog
 
 blog_posts: list[Blog] = [
     Blog(
-        "Civil Plan Creation for Boat Ramp Extension",
+        "Boat Ramp Civil Drawing Creation",
         "October 29, 2024",
-        """In this recording, I go through the process of creating a civil engineering plan set for a 
-        boat ramp extension in kentucky.""",
+        """A collections of a few videos that covers the highlights of creating
+        a set of drawings for a boat ramp extension with AutoCad and Carlson
+        Civil 2024 suite..""",
         "alexander_ramp_green_river.jpg",
         '',
         ['Civil','AutoCad','Carlson','Plans'],
-        "Civil_Plan_Creation_Boat_Ramp_1.html"
+        "Boat_Ramp_Civil_Drawing_Creation.html"
     ),
     Blog(
         "Creating An Aerial Image From A Drone Flight for Civil Drawings",
