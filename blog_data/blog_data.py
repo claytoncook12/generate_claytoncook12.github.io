@@ -2,6 +2,15 @@ from blog_data.model.blog import Blog
 
 blog_posts: list[Blog] = [
     Blog(
+        "Takeaways from TRB 2025",
+        "January 15, 2025",
+        "Reflecting on my first TRB Confrence in Washington, DC from Dec. 5-8, 2025.",
+        "trb2025_confrence_hall.jpg",
+        "",
+        ['TRB','Civil','Pavement','Geotechnology'],
+        "TRB_2025_Summary.html"
+    ),
+    Blog(
         "Boat Ramp Civil Drawing Creation",
         "October 29, 2024",
         """A collections of a few videos that covers the highlights of creating
