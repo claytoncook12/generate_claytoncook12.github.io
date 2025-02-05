@@ -30,6 +30,7 @@ class SiteGenerator(object):
         self.render_favorites_page()
         self.render_cadd_page()
         self.render_analysis_ex_page()
+        self.render_lifter_1_page()
         self.collect_blog_post_tags()
         self.render_main_page()
         self.render_blog_posts()
@@ -146,6 +147,16 @@ class SiteGenerator(object):
         print("Rendering Analysis Example page to static files")
         template = self.env.get_template('_analysis_ex.html')
         with open('public/analysis_ex.html', 'w+') as file:
+            html = template.render(
+                css_style_sheets = self.css_style_sheets
+            )
+            file.write(html)
+    
+    def render_lifter_1_page(self) -> None:
+        """ Create Lifter 1 Page """
+        print("Rendering Lifter 1 page to static files")
+        template = self.env.get_template('_lifter_1.html')
+        with open('public/lifter_1.html', 'w+') as file:
             html = template.render(
                 css_style_sheets = self.css_style_sheets
             )
