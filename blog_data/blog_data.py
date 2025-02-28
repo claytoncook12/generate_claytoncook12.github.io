@@ -73,7 +73,7 @@ blog_posts: list[Blog] = [
         """,
         "good-free-photos-LADl0hVNBCQ-unsplash.jpg",
         'Photo by <a href="https://unsplash.com/@goodfreephoto_com?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Good Free Photos</a> on <a href="https://unsplash.com/photos/LADl0hVNBCQ?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>',
-        ['Observer Pattern','Reactive Programming','JavaScript'],
+        ['Observer Pattern','Reactive Programming','Javascript'],
         "observer_pattern_and_reactive_programming.html"
     ),
     Blog(
