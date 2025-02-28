@@ -2,6 +2,17 @@ from blog_data.model.blog import Blog
 
 blog_posts: list[Blog] = [
     Blog(
+        "Graphing with Django and Plotly",
+        "Febuary 28, 2025",
+        """Graphing with Django and Plotly is a powerful combination for creating interactive and visually
+        appealing graphs on the web. In this blog post, we will explore plotting with plotly on the
+        client or server side.""",
+        "chart_image.jpg",
+        "Generated with AI February 28, 2025 at 11:56 AM",
+        ['Django','Plotly','Graphing',"Python","Javascript"],
+        "Graphing_with_Django_and_Plotly.html"
+    ),
+    Blog(
         "Takeaways from TRB 2025",
         "January 15, 2025",
         "Reflecting on my first TRB Confrence in Washington, DC from Dec. 5-8, 2025.",
