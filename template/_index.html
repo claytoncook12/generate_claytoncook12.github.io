@@ -11,21 +11,52 @@
 <div class="w3-row">
 
 <!-- Blog entries -->
-<div class="w3-col l8 s12">
+<div class="w3-col l8 s
+12" id="blogs-container">
   <h1 class="w3-center">Blog Posts</h1>
   <!-- Blog entry -->
   {% for blog_post in blog_posts %}
-    {% include 'partial/_blog_tile.html' %}
-  <hr>
+    {% if loop.index <= 3 %}
+      {% set hidden = false %}
+      {% include 'partial/_blog_tile.html' %}
+    {% else %}
+      {% set hidden = true %}
+      {% include 'partial/_blog_tile.html'%}
+    {% endif %}
   {% endfor %}
 <!-- END BLOG ENTRIES -->
+<div class="w3-right" style="margin-right: 15px;">
+  <button
+    id="display-all-blog-posts-btn" 
+    class="w3-button w3-padding-large w3-white w3-border w3-display-container"
+    type="button"
+    onclick="displayAllBlogPosts()"
+    style="box-shadow:0 4px 10px 0 rgba(0,0,0,0.2)"
+    >
+    <b>DISPLAY ALL BLOG POSTS</b>
+  </button>
+  </div>
+<script>
+  function displayAllBlogPosts() {
+    var blogContainer = document.getElementById('blogs-container');
+    var blogPosts = blogContainer.getElementsByTagName('div');
+    for (var i = 0; i < blogPosts.length; i++) {
+      blogPosts[i].style.display = 'block';
+    }
+    var displayAllBlogPostsBtn = document.getElementById('display-all-blog-posts-btn');
+    displayAllBlogPostsBtn.style.display = 'none';
+  }
+</script>
+
+</script>
 </div>
 
 <!-- Introduction menu -->
 <div class="w3-col l4">
   <!-- Projects Card -->
-  <h2 class="w3-center">Side Projects</h2>
+  
 <div class="w3-card w3-margin w3-white">
+  <h2 class="w3-center w3-padding-large">Side Projects</h2>
     <!-- Whistle Class -->
     <a
     href="html_projects/spring-2025-whistle-class/sign-up.html"
@@ -115,9 +146,9 @@
   <hr> 
  
   <!-- Labels / tags -->
-  <h2 class="w3-center">All Tags</h2>
   <div class="w3-card w3-margin">
     <div class="w3-container w3-white">
+      <h2 class="w3-center w3-padding-large">All Tags</h2>
     <p>
       {% for tag in tags %}
       <span 
